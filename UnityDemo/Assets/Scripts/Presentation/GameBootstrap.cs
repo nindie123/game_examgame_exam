@@ -51,7 +51,9 @@ namespace BagElimination.Presentation
             }
 
             var root = new GameObject("BoardPresentation");
-            root.AddComponent<BoardView>().Render(board);
+            BoardView view = root.AddComponent<BoardView>();
+            view.Render(board);
+            root.AddComponent<BoardController>().Initialize(board, view);
         }
     }
 }

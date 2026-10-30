@@ -2,7 +2,8 @@
     "name": "BagElimination.Presentation",
     "rootNamespace": "BagElimination.Presentation",
     "references": [
-        "BagElimination.Rules"
+        "BagElimination.Rules",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

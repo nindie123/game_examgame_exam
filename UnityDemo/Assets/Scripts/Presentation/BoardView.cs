@@ -1,3 +1,4 @@
+using System.Collections;
 using BagElimination.Rules.Board;
 using UnityEngine;
 
@@ -23,10 +24,20 @@ namespace BagElimination.Presentation
         private const float BoardPanelGap = 0.4f;       // Gap between the top panel bottom and the board plate top.
         private const float TopPanelWorldWidth = 6.5f;  // Target width of the top panel (height keeps aspect).
         private const float GoalIconWorldSize = 0.85f;  // Target size of the backpack icon.
+        private const float GoalIconOffsetX = -0.35f;   // Icon center, horizontal offset from the panel center.
+        private const float CountTextOffsetX = 0.10f;   // Count text start (MiddleLeft), horizontal offset from the panel center.
 
         // --- Text visual scale (adjust if the count looks too big or too small) ---
         private const int CountFontSize = 100;
         private const float CountCharacterSize = 0.06f;
+
+        // --- Selection & swap feedback ---
+        private const float SelectionScale = 1.3f;                 // Highlight size relative to the base slot.
+        public const float SwapDuration = 0.18f;                   // Seconds for one swap-then-rollback leg.
+        public const float HintHoldSeconds = 1.0f;                 // How long the valid-swap hint stays visible.
+        private const string ValidSwapHint = "有效交换，消除将在下一阶段接入";
+        private const int HintFontSize = 48;
+        private const float HintCharacterSize = 0.05f;
 
         // --- Colors ---
         private static readonly Color BackgroundColor = new Color(0.10f, 0.16f, 0.28f);  // Soft dark blue.
@@ -34,6 +45,7 @@ namespace BagElimination.Presentation
         private static readonly Color FallbackCellColor = new Color(0.30f, 0.42f, 0.62f);
         private static readonly Color FallbackPlateColor = new Color(0.14f, 0.20f, 0.34f, 0.92f);
         private static readonly Color FallbackBackpackColor = new Color(0.62f, 0.47f, 0.26f);
+        private static readonly Color SelectionHighlightColor = new Color(1f, 0.86f, 0.30f, 0.85f);
 
         // --- Resource paths (relative to any Resources folder) ---
         private const string TileSpritePath = "Presentation/tileA";
@@ -51,12 +63,17 @@ namespace BagElimination.Presentation
         private const int BackgroundOrder = -100;
         private const int BoardPlateOrder = 0;
         private const int BaseSlotOrder = 1;
-        private const int PieceOrder = 2;
+        private const int SelectionHighlightOrder = 2; // A ring behind the selected piece, so the candy stays visible.
+        private const int PieceOrder = 3;
         private const int TopPanelOrder = 50;
         private const int TopPanelOverlayOrder = 60;
 
         private BoardState _board;
         private bool _rendered;
+        private GameObject _boardRoot;
+        private Transform[,] _pieceTransforms;
+        private SpriteRenderer _selectionHighlight;
+        private TextMesh _hintText;
 
         private Sprite _whiteSprite;
         private Sprite _cellSprite;
@@ -103,9 +120,12 @@ namespace BagElimination.Presentation
 
             GameObject boardRoot = CreateChildObject("Board");
             boardRoot.transform.localPosition = new Vector3(0f, boardCenterY, 0f);
+            _boardRoot = boardRoot;
             BuildBoardPlate(boardRoot);
             BuildBaseSlots(boardRoot);
             BuildPieces(boardRoot);
+            BuildSelectionHighlight(boardRoot);
+            BuildHint();
         }
 
         private void LoadAssets()
@@ -197,6 +217,7 @@ namespace BagElimination.Presentation
         {
             GameObject piecesRoot = CreateChildObject("Pieces", boardRoot);
             float pieceSize = CellWorldSize * PieceScaleFactor;
+            _pieceTransforms = new Transform[_board.Height, _board.Width];
 
             for (int row = 0; row < _board.Height; row++)
             {
@@ -212,6 +233,7 @@ namespace BagElimination.Presentation
 
                     SpriteRenderer piece = CreateChildSprite(string.Format("Piece_{0}_{1}", row, col), PieceOrder, piecesRoot);
                     piece.transform.localPosition = CellCenter(row, col);
+                    _pieceTransforms[row, col] = piece.transform;
                     if (sprite != null)
                     {
                         piece.sprite = sprite;
@@ -261,7 +283,7 @@ namespace BagElimination.Presentation
         private void BuildGoalIcon(GameObject panelRoot)
         {
             SpriteRenderer icon = CreateChildSprite("GoalIcon", TopPanelOverlayOrder, panelRoot);
-            icon.transform.localPosition = new Vector3(-2.4f, 0f, 0f);
+            icon.transform.localPosition = new Vector3(GoalIconOffsetX, 0f, 0f);
             if (_goalSprite != null)
             {
                 icon.sprite = _goalSprite;
@@ -281,7 +303,7 @@ namespace BagElimination.Presentation
             int count = _board.CountBackpacks();
 
             var textObject = CreateChildObject("BackpackCount", panelRoot);
-            textObject.transform.localPosition = new Vector3(-1.6f, 0f, 0f);
+            textObject.transform.localPosition = new Vector3(CountTextOffsetX, 0f, 0f);
 
             var textMesh = textObject.AddComponent<TextMesh>();
             textMesh.text = count.ToString();
@@ -334,6 +356,151 @@ namespace BagElimination.Presentation
             float x = (col - (_board.Width - 1) * 0.5f) * CellSpacing;
             float y = ((_board.Height - 1) * 0.5f - row) * CellSpacing;
             return new Vector3(x, y, 0f);
+        }
+
+        private void BuildSelectionHighlight(GameObject boardRoot)
+        {
+            _selectionHighlight = CreateChildSprite("SelectionHighlight", SelectionHighlightOrder, boardRoot);
+            _selectionHighlight.sprite = WhiteSprite();
+            _selectionHighlight.color = SelectionHighlightColor;
+            float size = CellWorldSize * SelectionScale;
+            _selectionHighlight.transform.localScale = new Vector3(size, size, 1f);
+            _selectionHighlight.gameObject.SetActive(false);
+        }
+
+        private void BuildHint()
+        {
+            var hintObject = CreateChildObject("SwapHint");
+            _hintText = hintObject.AddComponent<TextMesh>();
+            _hintText.anchor = TextAnchor.MiddleCenter;
+            _hintText.alignment = TextAlignment.Center;
+            _hintText.fontSize = HintFontSize;
+            _hintText.characterSize = HintCharacterSize;
+            _hintText.color = SelectionHighlightColor;
+            if (_font != null)
+            {
+                _hintText.font = _font;
+            }
+
+            MeshRenderer mesh = hintObject.GetComponent<MeshRenderer>();
+            if (mesh != null)
+            {
+                mesh.sortingOrder = TopPanelOverlayOrder;
+            }
+
+            // Below the board plate, out of the way of both the board and the top panel.
+            float boardSpanY = (_board.Height - 1) * CellSpacing + CellWorldSize;
+            float boardBottom = _boardRoot.transform.position.y - boardSpanY * 0.5f;
+            hintObject.transform.localPosition = new Vector3(0f, boardBottom - 0.5f, 0f);
+            hintObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Inverse of <see cref="CellCenter"/> using the same <see cref="CellSpacing"/> constant and
+        /// board root, so click picking never duplicates the layout as a second set of numbers.
+        /// </summary>
+        public bool TryGetCell(Vector3 worldPosition, out int row, out int col)
+        {
+            row = 0;
+            col = 0;
+            if (_board == null || _boardRoot == null)
+            {
+                return false;
+            }
+
+            Vector3 local = worldPosition - _boardRoot.transform.position;
+            float colFloat = local.x / CellSpacing + (_board.Width - 1) * 0.5f;
+            float rowFloat = (_board.Height - 1) * 0.5f - local.y / CellSpacing;
+            int candidateCol = Mathf.RoundToInt(colFloat);
+            int candidateRow = Mathf.RoundToInt(rowFloat);
+            if (candidateRow < 0 || candidateRow >= _board.Height || candidateCol < 0 || candidateCol >= _board.Width)
+            {
+                return false;
+            }
+
+            row = candidateRow;
+            col = candidateCol;
+            return true;
+        }
+
+        public void ShowSelection(int row, int col)
+        {
+            if (_selectionHighlight == null)
+            {
+                return;
+            }
+
+            _selectionHighlight.transform.localPosition = CellCenter(row, col);
+            _selectionHighlight.gameObject.SetActive(true);
+        }
+
+        public void ClearSelection()
+        {
+            if (_selectionHighlight != null)
+            {
+                _selectionHighlight.gameObject.SetActive(false);
+            }
+        }
+
+        public void ShowHint()
+        {
+            if (_hintText != null)
+            {
+                _hintText.text = ValidSwapHint;
+                _hintText.gameObject.SetActive(true);
+            }
+        }
+
+        public void HideHint()
+        {
+            if (_hintText != null)
+            {
+                _hintText.gameObject.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Exchanges the two pieces' screen positions over <paramref name="duration"/> seconds.
+        /// <see cref="_pieceTransforms"/> stays keyed by the original cell, so calling this again with
+        /// the same two coordinates swaps them back — the authoritative board data is never touched.
+        /// </summary>
+        public IEnumerator AnimateSwap(int firstRow, int firstCol, int secondRow, int secondCol, float duration)
+        {
+            if (_pieceTransforms == null)
+            {
+                yield break;
+            }
+
+            if (firstRow < 0 || firstRow >= _board.Height || firstCol < 0 || firstCol >= _board.Width
+                || secondRow < 0 || secondRow >= _board.Height || secondCol < 0 || secondCol >= _board.Width)
+            {
+                yield break;
+            }
+
+            Transform first = _pieceTransforms[firstRow, firstCol];
+            Transform second = _pieceTransforms[secondRow, secondCol];
+            if (first == null || second == null)
+            {
+                // An empty cell has no piece transform; there is nothing to animate. The swap itself
+                // should never have been submitted for a non-movable cell, so log it as a diagnostic.
+                Debug.LogWarning("[BoardView] 交换动画收到空棋子格子，已跳过。");
+                yield break;
+            }
+
+            Vector3 firstStart = first.localPosition;
+            Vector3 secondStart = second.localPosition;
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                first.localPosition = Vector3.Lerp(firstStart, secondStart, t);
+                second.localPosition = Vector3.Lerp(secondStart, firstStart, t);
+                yield return null;
+            }
+
+            first.localPosition = secondStart;
+            second.localPosition = firstStart;
         }
 
         private static Vector2 SpriteNaturalSize(Sprite sprite)
