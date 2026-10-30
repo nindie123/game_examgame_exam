@@ -1,6 +1,6 @@
 using System.Collections;
 using BagElimination.Rules.Board;
-using BagElimination.Rules.Legality;
+using BagElimination.Rules.Resolution;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -110,37 +110,59 @@ namespace BagElimination.Presentation
             _state = State.Busy;
             ClearSelection();
 
-            // Evaluate the requested move; the evaluator already contains adjacency / blocked / match
-            // rules, so the controller does not duplicate any of that logic.
-            SwapOutcome outcome = SwapEvaluator.Evaluate(
+            // The resolver carries the whole decision (reject / plain three / special); the
+            // controller only plays the matching feedback and never re-implements match rules.
+            SwapResolveResult result = SwapResolver.Resolve(
                 _board,
                 new BoardPosition(firstRow, firstCol),
-                new BoardPosition(secondRow, secondCol)).Outcome;
+                new BoardPosition(secondRow, secondCol));
 
-            bool valid = outcome.IsLegal();
-            StartCoroutine(PlaySwapFeedback(firstRow, firstCol, secondRow, secondCol, valid));
+            switch (result.Outcome)
+            {
+                case SwapResolveOutcome.NormalThree:
+                    StartCoroutine(PlayCommittedSwap(firstRow, firstCol, secondRow, secondCol, result));
+                    break;
+                case SwapResolveOutcome.SpecialUnsupported:
+                    StartCoroutine(PlayPreviewSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SpecialSwapHint));
+                    break;
+                default:
+                    StartCoroutine(PlayPreviewSwap(firstRow, firstCol, secondRow, secondCol, null));
+                    break;
+            }
         }
 
-        private IEnumerator PlaySwapFeedback(int firstRow, int firstCol, int secondRow, int secondCol, bool valid)
+        private IEnumerator PlayPreviewSwap(int firstRow, int firstCol, int secondRow, int secondCol, string hint)
         {
-            // Swap the two pieces on screen (authoritative data untouched)...
+            // Rejected swaps animate and roll back with no hint; special (four+/cross/2x2) swaps
+            // roll back with a hint. Neither mutates the authoritative board.
             yield return StartCoroutine(_view.AnimateSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SwapDuration));
-            yield return null; // Hold one frame so the swapped result is visible.
+            yield return null;
 
-            if (valid)
+            if (hint != null)
             {
-                // Temp preview for T02: show why the swap would be accepted, then roll back. The real
-                // elimination branch will replace exactly this block in a later round.
-                _view.ShowHint();
+                _view.ShowHint(hint);
                 yield return new WaitForSeconds(BoardView.HintHoldSeconds);
                 _view.HideHint();
             }
 
-            // ...then swap the same two pieces back, returning the screen to the pre-swap layout.
+            yield return StartCoroutine(_view.AnimateSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SwapDuration));
+            _state = State.Ready;
+        }
+
+        private IEnumerator PlayCommittedSwap(int firstRow, int firstCol, int secondRow, int secondCol, SwapResolveResult result)
+        {
             yield return StartCoroutine(_view.AnimateSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SwapDuration));
 
-            // Visual layout and logical selection are consistent again; accept input once more.
-            _state = State.Ready;
+            // Commit: adopt the cleared snapshot, re-key the piece look-up to the swapped ownership,
+            // hide the cleared pieces and backpacks, and refresh the count from the committed board.
+            _board = result.Board;
+            _view.FinalizeSwap(firstRow, firstCol, secondRow, secondCol);
+            _view.ApplyCommittedBoard(result.Board);
+            _view.RemoveOccupants(result.MatchedCells);
+            _view.RemoveOccupants(result.HitBackpacks);
+            _view.ShowHint(BoardView.RoundCompleteHint);
+
+            // No fall/refill this round: input stays locked (State.Busy) until the scene is re-entered.
         }
 
         private static Vector3 ScreenToWorld(Vector2 screenPosition)

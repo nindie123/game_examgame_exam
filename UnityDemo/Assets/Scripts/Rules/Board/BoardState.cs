@@ -103,6 +103,34 @@ namespace BagElimination.Rules.Board
             return new BoardState(Width, Height, copy);
         }
 
+        /// <summary>
+        /// Mechanical clear used by the resolver: returns a copy with every listed in-bounds
+        /// position set to <see cref="BoardCell.Empty"/>. Duplicate positions are idempotent, and
+        /// untouched cells keep their object id and attributes. Deciding which cells to clear
+        /// belongs to the resolver, not here.
+        /// </summary>
+        public BoardState WithCellsCleared(IReadOnlyList<BoardPosition> positions)
+        {
+            if (positions == null)
+            {
+                throw new ArgumentNullException(nameof(positions));
+            }
+
+            var copy = (BoardCell[])_cells.Clone();
+            for (int i = 0; i < positions.Count; i++)
+            {
+                BoardPosition position = positions[i];
+                if (!IsInside(position))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(position), position, "Position is outside the board.");
+                }
+
+                copy[position.ToIndex(Width)] = BoardCell.Empty;
+            }
+
+            return new BoardState(Width, Height, copy);
+        }
+
         public int CountBackpacks()
         {
             int count = 0;

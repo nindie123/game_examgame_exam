@@ -80,7 +80,12 @@ namespace BagElimination.Rules.Matching
             return IsInMatchingBlock(board, position, color);
         }
 
-        private static int CountRun(BoardState board, BoardPosition origin, int rowStep, int columnStep, PieceColor color)
+        /// <summary>
+        /// Counts same-color matchable cells in one direction from <paramref name="origin"/>,
+        /// excluding the origin itself. Shared with <see cref="LinearMatchScanner"/> so line
+        /// scanning reuses the exact same "backpack/prop/empty breaks a run" rule.
+        /// </summary>
+        internal static int CountRun(BoardState board, BoardPosition origin, int rowStep, int columnStep, PieceColor color)
         {
             int count = 0;
             int row = origin.Row + rowStep;
@@ -101,7 +106,11 @@ namespace BagElimination.Rules.Matching
             return count;
         }
 
-        private static bool IsInMatchingBlock(BoardState board, BoardPosition position, PieceColor color)
+        /// <summary>
+        /// True when the given position sits inside a 2x2 block of that color. Shared with the
+        /// resolver so a 2x2 match stays out of scope for the plain three-line clear.
+        /// </summary>
+        internal static bool IsInMatchingBlock(BoardState board, BoardPosition position, PieceColor color)
         {
             for (int rowOffset = 0; rowOffset < BlockSize; rowOffset++)
             {
@@ -138,7 +147,7 @@ namespace BagElimination.Rules.Matching
             return false;
         }
 
-        private static bool TryGetColor(BoardState board, BoardPosition position, out PieceColor color)
+        internal static bool TryGetColor(BoardState board, BoardPosition position, out PieceColor color)
         {
             var cell = board.GetCell(position);
             if (!cell.IsMatchable || !PieceColorRules.IsPlayable(cell.Color))

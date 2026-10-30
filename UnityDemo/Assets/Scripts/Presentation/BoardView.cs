@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using BagElimination.Rules.Board;
 using UnityEngine;
 
@@ -35,7 +36,8 @@ namespace BagElimination.Presentation
         private const float SelectionScale = 1.3f;                 // Highlight size relative to the base slot.
         public const float SwapDuration = 0.18f;                   // Seconds for one swap-then-rollback leg.
         public const float HintHoldSeconds = 1.0f;                 // How long the valid-swap hint stays visible.
-        private const string ValidSwapHint = "有效交换，消除将在下一阶段接入";
+        public const string SpecialSwapHint = "特殊匹配尚未接入";
+        public const string RoundCompleteHint = "本轮消除完成，下落待接入";
         private const int HintFontSize = 48;
         private const float HintCharacterSize = 0.05f;
 
@@ -74,6 +76,7 @@ namespace BagElimination.Presentation
         private Transform[,] _pieceTransforms;
         private SpriteRenderer _selectionHighlight;
         private TextMesh _hintText;
+        private TextMesh _countText;
 
         private Sprite _whiteSprite;
         private Sprite _cellSprite;
@@ -306,6 +309,7 @@ namespace BagElimination.Presentation
             textObject.transform.localPosition = new Vector3(CountTextOffsetX, 0f, 0f);
 
             var textMesh = textObject.AddComponent<TextMesh>();
+            _countText = textMesh;
             textMesh.text = count.ToString();
             textMesh.anchor = TextAnchor.MiddleLeft;
             textMesh.alignment = TextAlignment.Left;
@@ -442,11 +446,11 @@ namespace BagElimination.Presentation
             }
         }
 
-        public void ShowHint()
+        public void ShowHint(string message)
         {
             if (_hintText != null)
             {
-                _hintText.text = ValidSwapHint;
+                _hintText.text = message;
                 _hintText.gameObject.SetActive(true);
             }
         }
@@ -501,6 +505,68 @@ namespace BagElimination.Presentation
 
             first.localPosition = secondStart;
             second.localPosition = firstStart;
+        }
+
+        /// <summary>
+        /// Re-keys the piece look-up after a committed swap so that _pieceTransforms[row, col]
+        /// names the piece that now occupies that cell. Call after <see cref="AnimateSwap"/> has
+        /// moved the two pieces, before any clear step reads the array again.
+        /// </summary>
+        public void FinalizeSwap(int firstRow, int firstCol, int secondRow, int secondCol)
+        {
+            if (_pieceTransforms == null)
+            {
+                return;
+            }
+
+            Transform swap = _pieceTransforms[firstRow, firstCol];
+            _pieceTransforms[firstRow, firstCol] = _pieceTransforms[secondRow, secondCol];
+            _pieceTransforms[secondRow, secondCol] = swap;
+        }
+
+        /// <summary>
+        /// Hides the piece at each listed position. The look-up must already reflect the committed
+        /// board (see <see cref="FinalizeSwap"/>); this only changes the view, never the data.
+        /// </summary>
+        public void RemoveOccupants(IReadOnlyList<BoardPosition> positions)
+        {
+            if (_pieceTransforms == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < positions.Count; i++)
+            {
+                BoardPosition position = positions[i];
+                Transform piece = _pieceTransforms[position.Row, position.Column];
+                if (piece != null)
+                {
+                    piece.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adopts the post-elimination snapshot as the board this view reads (backpack count,
+        /// picking). It never rebuilds background/plate/panel; those are created once in Render.
+        /// </summary>
+        public void ApplyCommittedBoard(BoardState board)
+        {
+            if (board == null)
+            {
+                return;
+            }
+
+            _board = board;
+            RefreshBackpackCount();
+        }
+
+        private void RefreshBackpackCount()
+        {
+            if (_countText != null && _board != null)
+            {
+                _countText.text = _board.CountBackpacks().ToString();
+            }
         }
 
         private static Vector2 SpriteNaturalSize(Sprite sprite)

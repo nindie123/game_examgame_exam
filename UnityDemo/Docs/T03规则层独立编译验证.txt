@@ -1,0 +1,21 @@
+T03 规则层独立编译验证（非 Unity EditMode 套件）
+时间：2026-10-30
+方式：因 Unity Editor 占用工程（批量模式无法打开同一工程），用 dotnet 10 编译 Assembly 内同一批
+      Rules 源码（Assets/Scripts/Rules/**，noEngineReferences 纯 C#），再用临时桩 main 跑等价断言。
+结果：ALL TESTS PASSED（10/10）
+
+PASS horizontal3 matched=[(1, 1),(1, 2),(1, 3)]
+PASS vertical3 matched=[(1, 1),(2, 1),(3, 1)]
+PASS fourInARow matched=[(1, 1),(1, 2),(1, 3),(1, 4)]
+PASS twoIndependent matched=[(1, 1),(1, 2),(1, 3),(1, 6),(1, 7),(1, 8)]
+PASS crossing matched=[(1, 2),(2, 1),(2, 2),(2, 3),(3, 2)]
+PASS adjacent-cells matched=[(2, 2),(2, 3),(2, 4)]
+PASS adjacent-backpacks backpacks=[(1, 3)]
+PASS backpackOnce backpacks=[(1, 1)]
+PASS blockersBreakRuns
+PASS noMatchEmpty
+PASS boardUnchanged
+
+说明：上述坐标为 BoardPosition.ToString() 的一基显示（行/列各 +1），断言按零基值比较。
+注：此为独立编译桩验证，用于在 Unity 被占用时校验规则层编译与行为；官方 EditMode NUnit 套件
+    （LinearMatchScannerTests 等）仍未执行，需在 Unity 空闲时运行。
