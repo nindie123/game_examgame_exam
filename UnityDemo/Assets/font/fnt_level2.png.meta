@@ -1,0 +1,2472 @@
+fileFormatVersion: 2
+guid: c8378b029b84eab4bb2192a3e40da09b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -520239961314235093
+    second: fnt_level2_0
+  - first:
+      213: 1540254797922237013
+    second: fnt_level2_1
+  - first:
+      213: 2381271738179026525
+    second: fnt_level2_2
+  - first:
+      213: -1758216881110692997
+    second: fnt_level2_3
+  - first:
+      213: 2182390249814412427
+    second: fnt_level2_4
+  - first:
+      213: 1982753919312070247
+    second: fnt_level2_5
+  - first:
+      213: -3762137954035245559
+    second: fnt_level2_6
+  - first:
+      213: 8345971787936700683
+    second: fnt_level2_7
+  - first:
+      213: 987894711796746567
+    second: fnt_level2_8
+  - first:
+      213: -5213907214804626778
+    second: fnt_level2_9
+  - first:
+      213: -1433433501940630250
+    second: fnt_level2_10
+  - first:
+      213: -9220517404587310003
+    second: fnt_level2_11
+  - first:
+      213: -4419256538226867384
+    second: fnt_level2_12
+  - first:
+      213: -2654630422014467330
+    second: fnt_level2_13
+  - first:
+      213: 996796874291983697
+    second: fnt_level2_14
+  - first:
+      213: 8474778520523085959
+    second: fnt_level2_15
+  - first:
+      213: 3133680787791272706
+    second: fnt_level2_16
+  - first:
+      213: 6133279121013832474
+    second: fnt_level2_17
+  - first:
+      213: -8734845236631993530
+    second: fnt_level2_18
+  - first:
+      213: -2847940201978072439
+    second: fnt_level2_19
+  - first:
+      213: 169841388315789458
+    second: fnt_level2_20
+  - first:
+      213: -4874357450453018715
+    second: fnt_level2_21
+  - first:
+      213: 738728824116453342
+    second: fnt_level2_22
+  - first:
+      213: 435615603427705824
+    second: fnt_level2_23
+  - first:
+      213: 5039732627663300010
+    second: fnt_level2_24
+  - first:
+      213: 7464135319158892413
+    second: fnt_level2_25
+  - first:
+      213: -5434373195083634488
+    second: fnt_level2_26
+  - first:
+      213: -7348713922612462152
+    second: fnt_level2_27
+  - first:
+      213: 3535371219605810769
+    second: fnt_level2_28
+  - first:
+      213: -1844906577296463672
+    second: fnt_level2_29
+  - first:
+      213: -5869887538401294847
+    second: fnt_level2_30
+  - first:
+      213: 7364426984789810204
+    second: fnt_level2_31
+  - first:
+      213: -1241893042696961448
+    second: fnt_level2_32
+  - first:
+      213: 6809354840751031391
+    second: fnt_level2_33
+  - first:
+      213: -1378763018461109316
+    second: fnt_level2_34
+  - first:
+      213: -8325702242136283824
+    second: fnt_level2_35
+  - first:
+      213: -5820792260604320705
+    second: fnt_level2_36
+  - first:
+      213: 8440496336828429793
+    second: fnt_level2_37
+  - first:
+      213: -6217834495814174387
+    second: fnt_level2_38
+  - first:
+      213: -2181322710134874153
+    second: fnt_level2_39
+  - first:
+      213: 644811797797330036
+    second: fnt_level2_40
+  - first:
+      213: 8346942400129366059
+    second: fnt_level2_41
+  - first:
+      213: -3805347364874906345
+    second: fnt_level2_42
+  - first:
+      213: -7133111717817735762
+    second: fnt_level2_43
+  - first:
+      213: 59286615529979740
+    second: fnt_level2_44
+  - first:
+      213: 896338019476494777
+    second: fnt_level2_45
+  - first:
+      213: -8461357571209779192
+    second: fnt_level2_46
+  - first:
+      213: -681136235037107160
+    second: fnt_level2_47
+  - first:
+      213: 2382915757288476924
+    second: fnt_level2_48
+  - first:
+      213: -3830301129673374757
+    second: fnt_level2_49
+  - first:
+      213: -7031991224647553428
+    second: fnt_level2_50
+  - first:
+      213: 8874427526136244920
+    second: fnt_level2_51
+  - first:
+      213: 6679372875937478142
+    second: fnt_level2_52
+  - first:
+      213: 1361132719588039903
+    second: fnt_level2_53
+  - first:
+      213: -6939271208879822171
+    second: fnt_level2_54
+  - first:
+      213: 8538653236307354012
+    second: fnt_level2_55
+  - first:
+      213: -1630208000081380259
+    second: fnt_level2_56
+  - first:
+      213: -1804549258316895141
+    second: fnt_level2_57
+  - first:
+      213: -5188493986464545242
+    second: fnt_level2_58
+  - first:
+      213: 5675823607373189142
+    second: fnt_level2_59
+  - first:
+      213: 4259287834760697033
+    second: fnt_level2_60
+  - first:
+      213: 4560952390891553798
+    second: fnt_level2_61
+  - first:
+      213: -437777404484167206
+    second: fnt_level2_62
+  - first:
+      213: -6886535071265725590
+    second: fnt_level2_63
+  - first:
+      213: -726931027815119856
+    second: fnt_level2_64
+  - first:
+      213: 7543380231693999733
+    second: fnt_level2_65
+  - first:
+      213: -4850160177251752713
+    second: fnt_level2_66
+  - first:
+      213: 1360880027999391617
+    second: fnt_level2_67
+  - first:
+      213: -7244988739102984765
+    second: fnt_level2_68
+  - first:
+      213: 5436086246776847849
+    second: fnt_level2_69
+  - first:
+      213: -8678926508130977166
+    second: fnt_level2_70
+  - first:
+      213: 2952164191903758110
+    second: fnt_level2_71
+  - first:
+      213: -697459551367678767
+    second: fnt_level2_72
+  - first:
+      213: 2690817496299891088
+    second: fnt_level2_73
+  - first:
+      213: -9190208557920598570
+    second: fnt_level2_74
+  - first:
+      213: 8997145918169406989
+    second: fnt_level2_75
+  - first:
+      213: 6456199931035338745
+    second: fnt_level2_76
+  - first:
+      213: 5212998640171390963
+    second: fnt_level2_77
+  - first:
+      213: -4114887628049371258
+    second: fnt_level2_78
+  - first:
+      213: -4278557372990359370
+    second: fnt_level2_79
+  - first:
+      213: 5513564551362966078
+    second: fnt_level2_80
+  - first:
+      213: 4989693944157215791
+    second: fnt_level2_81
+  - first:
+      213: -335523929152394456
+    second: fnt_level2_82
+  - first:
+      213: -8803812370550586989
+    second: fnt_level2_83
+  - first:
+      213: -3089577420539295318
+    second: fnt_level2_84
+  - first:
+      213: -4951026317800939921
+    second: fnt_level2_85
+  - first:
+      213: 7832986951917868530
+    second: fnt_level2_86
+  - first:
+      213: -8739717577870087407
+    second: fnt_level2_87
+  - first:
+      213: 3607211730455309989
+    second: fnt_level2_88
+  - first:
+      213: 5128154944873862689
+    second: fnt_level2_89
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fnt_level2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 354
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2de6e3f28cb7c8f0800000000000000
+      internalID: -520239961314235093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_1
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 357
+        width: 25
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55afebdf395106510800000000000000
+      internalID: 1540254797922237013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 357
+        width: 25
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e76d3870afb0120800000000000000
+      internalID: 2381271738179026525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_3
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 357
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b4d43ef0f8997e0800000000000000
+      internalID: -1758216881110692997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 358
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8cc6719e58694e10800000000000000
+      internalID: 2182390249814412427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 358
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7660c9d3f28248b10800000000000000
+      internalID: 1982753919312070247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 358
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90ed6b5a6733acbc0800000000000000
+      internalID: -3762137954035245559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_7
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 358
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b09166d4f19d2d370800000000000000
+      internalID: 8345971787936700683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_8
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 358
+        width: 25
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 749c12c9105b5bd00800000000000000
+      internalID: 987894711796746567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 358
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a259b9330b74a7b0800000000000000
+      internalID: -5213907214804626778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_10
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 358
+        width: 18
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d3fab13db6b1ce0800000000000000
+      internalID: -1433433501940630250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 309
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d44444ed5442a0080800000000000000
+      internalID: -9220517404587310003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 311
+        width: 19
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8434aabb795aba2c0800000000000000
+      internalID: -4419256538226867384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_13
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 313
+        width: 64
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2e1ed22bbd82bd0800000000000000
+      internalID: -2654630422014467330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_14
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 314
+        width: 64
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 155b465d97555dd00800000000000000
+      internalID: 996796874291983697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_15
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 313
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78893e1c9267c9570800000000000000
+      internalID: 8474778520523085959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_16
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 313
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20bd3c3d2121d7b20800000000000000
+      internalID: 3133680787791272706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_17
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 313
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1b79547dd8cd1550800000000000000
+      internalID: 6133279121013832474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_18
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 313
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6438986598897c680800000000000000
+      internalID: -8734845236631993530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 982fa8fa9751a78d0800000000000000
+      internalID: -2847940201978072439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298c8b2c7d56b5200800000000000000
+      internalID: 169841388315789458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 232
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7187969bdca5cb0800000000000000
+      internalID: -4874357450453018715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_22
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf9dca93fd704a00800000000000000
+      internalID: 738728824116453342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_23
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 232
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e30de4551e9b0600800000000000000
+      internalID: 435615603427705824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_24
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 271
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa521da8f1ab0f540800000000000000
+      internalID: 5039732627663300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_25
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 231
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77a9eda68fe59760800000000000000
+      internalID: 7464135319158892413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_26
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c8a2222f5a3594b0800000000000000
+      internalID: -5434373195083634488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_27
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 232
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd77be5f9f140a90800000000000000
+      internalID: -7348713922612462152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_28
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 271
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15e6ebd9469201130800000000000000
+      internalID: 3535371219605810769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_29
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 232
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c866702e339566e0800000000000000
+      internalID: -1844906577296463672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_30
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 271
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10649124268f98ea0800000000000000
+      internalID: -5869887538401294847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_31
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 271
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1c92b20353b33660800000000000000
+      internalID: 7364426984789810204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_32
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 232
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 852c4058bd8e3cee0800000000000000
+      internalID: -1241893042696961448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_33
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 271
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f544d807620bf7e50800000000000000
+      internalID: 6809354840751031391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 193
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb32e27f656addce0800000000000000
+      internalID: -1378763018461109316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_35
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 193
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0552bc71ce9257c80800000000000000
+      internalID: -8325702242136283824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_36
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 193
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3426536744683fa0800000000000000
+      internalID: -5820792260604320705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_37
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 193
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e5f4acd2baa22570800000000000000
+      internalID: 8440496336828429793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_38
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 193
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4973d43870d5b9a0800000000000000
+      internalID: -6217834495814174387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_39
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 232
+        width: 48
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df1be16d826ab1e0800000000000000
+      internalID: -2181322710134874153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_40
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 193
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47cd0bae9e4d2f800800000000000000
+      internalID: 644811797797330036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_41
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 193
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b287b5093eb46d370800000000000000
+      internalID: 8346942400129366059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 155
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71599a5bbb0b03bc0800000000000000
+      internalID: -3805347364874906345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_43
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 155
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea52c4c7fa8120d90800000000000000
+      internalID: -7133111717817735762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_44
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 155
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f799adcd0a2d000800000000000000
+      internalID: 59286615529979740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_45
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 155
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b9d2910eae607c00800000000000000
+      internalID: 896338019476494777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_46
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 155
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 808aa728e18339a80800000000000000
+      internalID: -8461357571209779192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_47
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 193
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c57faf33e1c86f0800000000000000
+      internalID: -681136235037107160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_48
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 156
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf05cda8141d11120800000000000000
+      internalID: 2382915757288476924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_49
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 156
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd38a079a6908dac0800000000000000
+      internalID: -3830301129673374757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_50
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 155
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ee73ffc39596e90800000000000000
+      internalID: -7031991224647553428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_51
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 155
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8baac48f0dc482b70800000000000000
+      internalID: 8874427526136244920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 117
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5f1a8ed36e1bc50800000000000000
+      internalID: 6679372875937478142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_53
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 118
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdcd4333ff6b3e210800000000000000
+      internalID: 1361132719588039903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_54
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 118
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aa6f92f991c2bf90800000000000000
+      internalID: -6939271208879822171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_55
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 117
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91e652f0e36f7670800000000000000
+      internalID: 8538653236307354012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_56
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 117
+        width: 20
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c362d06765069e0800000000000000
+      internalID: -1630208000081380259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_57
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 117
+        width: 19
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ca35ea204f4f6e0800000000000000
+      internalID: -1804549258316895141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_58
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 119
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626c7898534cef7b0800000000000000
+      internalID: -5188493986464545242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_59
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 119
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6105145cf7394ce40800000000000000
+      internalID: 5675823607373189142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_60
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 119
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c4dd0318b70c1b30800000000000000
+      internalID: 4259287834760697033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 81
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6044f88d802cb4f30800000000000000
+      internalID: 4560952390891553798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_62
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 83
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9570325c3bce9f0800000000000000
+      internalID: -437777404484167206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_63
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 85
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a63efefc6dc1e60a0800000000000000
+      internalID: -6886535071265725590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_64
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 85
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 014ced6e41c69e5f0800000000000000
+      internalID: -726931027815119856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_65
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 85
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e13dbaa587fa860800000000000000
+      internalID: 7543380231693999733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_66
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 85
+        width: 43
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4e92b1405c0bcb0800000000000000
+      internalID: -4850160177251752713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_67
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 85
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18fc3dadc21d2e210800000000000000
+      internalID: 1360880027999391617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_68
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 85
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c5bf0c9021a47b90800000000000000
+      internalID: -7244988739102984765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_69
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 85
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed358bc3abd07b40800000000000000
+      internalID: 5436086246776847849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27ab123e2524e8780800000000000000
+      internalID: -8678926508130977166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_71
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 24
+        width: 36
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e173d09f0b138f820800000000000000
+      internalID: 2952164191903758110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_72
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 49
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d4b68bbb302256f0800000000000000
+      internalID: -697459551367678767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_73
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 24
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0996c5e9144b75520800000000000000
+      internalID: 2690817496299891088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_74
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 28
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d543652202d57080800000000000000
+      internalID: -9190208557920598570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_75
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 49
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ed7dc2b884cdc70800000000000000
+      internalID: 8997145918169406989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_76
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 48
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f7434081a7099950800000000000000
+      internalID: 6456199931035338745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_77
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 49
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f79202c4aa485840800000000000000
+      internalID: 5212998640171390963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_78
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 48
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68fa77ff08bf4e6c0800000000000000
+      internalID: -4114887628049371258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_79
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 48
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b8f7cfecb28f94c0800000000000000
+      internalID: -4278557372990359370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_80
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 48
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e32fc225fbd148c40800000000000000
+      internalID: 5513564551362966078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_81
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 50
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c9867a434fe3540800000000000000
+      internalID: 4989693944157215791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_82
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 50
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b6a3d93caf75bf0800000000000000
+      internalID: -335523929152394456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_83
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39184282b4392d580800000000000000
+      internalID: -8803812370550586989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_84
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 24
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa900be84bd9f15d0800000000000000
+      internalID: -3089577420539295318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_85
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 28
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e5dddabcb6a4bb0800000000000000
+      internalID: -4951026317800939921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_86
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 28
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f5955fb12c54bc60800000000000000
+      internalID: 7832986951917868530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_87
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 28
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11be0ddfa2946b680800000000000000
+      internalID: -8739717577870087407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_88
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 30
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ae296ff4f36f0230800000000000000
+      internalID: 3607211730455309989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fnt_level2_89
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 31
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1269e5290cdda2740800000000000000
+      internalID: 5128154944873862689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fnt_level2_0: -520239961314235093
+      fnt_level2_1: 1540254797922237013
+      fnt_level2_10: -1433433501940630250
+      fnt_level2_11: -9220517404587310003
+      fnt_level2_12: -4419256538226867384
+      fnt_level2_13: -2654630422014467330
+      fnt_level2_14: 996796874291983697
+      fnt_level2_15: 8474778520523085959
+      fnt_level2_16: 3133680787791272706
+      fnt_level2_17: 6133279121013832474
+      fnt_level2_18: -8734845236631993530
+      fnt_level2_19: -2847940201978072439
+      fnt_level2_2: 2381271738179026525
+      fnt_level2_20: 169841388315789458
+      fnt_level2_21: -4874357450453018715
+      fnt_level2_22: 738728824116453342
+      fnt_level2_23: 435615603427705824
+      fnt_level2_24: 5039732627663300010
+      fnt_level2_25: 7464135319158892413
+      fnt_level2_26: -5434373195083634488
+      fnt_level2_27: -7348713922612462152
+      fnt_level2_28: 3535371219605810769
+      fnt_level2_29: -1844906577296463672
+      fnt_level2_3: -1758216881110692997
+      fnt_level2_30: -5869887538401294847
+      fnt_level2_31: 7364426984789810204
+      fnt_level2_32: -1241893042696961448
+      fnt_level2_33: 6809354840751031391
+      fnt_level2_34: -1378763018461109316
+      fnt_level2_35: -8325702242136283824
+      fnt_level2_36: -5820792260604320705
+      fnt_level2_37: 8440496336828429793
+      fnt_level2_38: -6217834495814174387
+      fnt_level2_39: -2181322710134874153
+      fnt_level2_4: 2182390249814412427
+      fnt_level2_40: 644811797797330036
+      fnt_level2_41: 8346942400129366059
+      fnt_level2_42: -3805347364874906345
+      fnt_level2_43: -7133111717817735762
+      fnt_level2_44: 59286615529979740
+      fnt_level2_45: 896338019476494777
+      fnt_level2_46: -8461357571209779192
+      fnt_level2_47: -681136235037107160
+      fnt_level2_48: 2382915757288476924
+      fnt_level2_49: -3830301129673374757
+      fnt_level2_5: 1982753919312070247
+      fnt_level2_50: -7031991224647553428
+      fnt_level2_51: 8874427526136244920
+      fnt_level2_52: 6679372875937478142
+      fnt_level2_53: 1361132719588039903
+      fnt_level2_54: -6939271208879822171
+      fnt_level2_55: 8538653236307354012
+      fnt_level2_56: -1630208000081380259
+      fnt_level2_57: -1804549258316895141
+      fnt_level2_58: -5188493986464545242
+      fnt_level2_59: 5675823607373189142
+      fnt_level2_6: -3762137954035245559
+      fnt_level2_60: 4259287834760697033
+      fnt_level2_61: 4560952390891553798
+      fnt_level2_62: -437777404484167206
+      fnt_level2_63: -6886535071265725590
+      fnt_level2_64: -726931027815119856
+      fnt_level2_65: 7543380231693999733
+      fnt_level2_66: -4850160177251752713
+      fnt_level2_67: 1360880027999391617
+      fnt_level2_68: -7244988739102984765
+      fnt_level2_69: 5436086246776847849
+      fnt_level2_7: 8345971787936700683
+      fnt_level2_70: -8678926508130977166
+      fnt_level2_71: 2952164191903758110
+      fnt_level2_72: -697459551367678767
+      fnt_level2_73: 2690817496299891088
+      fnt_level2_74: -9190208557920598570
+      fnt_level2_75: 8997145918169406989
+      fnt_level2_76: 6456199931035338745
+      fnt_level2_77: 5212998640171390963
+      fnt_level2_78: -4114887628049371258
+      fnt_level2_79: -4278557372990359370
+      fnt_level2_8: 987894711796746567
+      fnt_level2_80: 5513564551362966078
+      fnt_level2_81: 4989693944157215791
+      fnt_level2_82: -335523929152394456
+      fnt_level2_83: -8803812370550586989
+      fnt_level2_84: -3089577420539295318
+      fnt_level2_85: -4951026317800939921
+      fnt_level2_86: 7832986951917868530
+      fnt_level2_87: -8739717577870087407
+      fnt_level2_88: 3607211730455309989
+      fnt_level2_89: 5128154944873862689
+      fnt_level2_9: -5213907214804626778
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

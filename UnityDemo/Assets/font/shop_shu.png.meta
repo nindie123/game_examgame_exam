@@ -1,0 +1,2472 @@
+fileFormatVersion: 2
+guid: be9d6d56c22890c4f8afc4578da8fc5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8199619263172869234
+    second: shop_shu_0
+  - first:
+      213: 4796886117953340268
+    second: shop_shu_1
+  - first:
+      213: 7803600320171334469
+    second: shop_shu_2
+  - first:
+      213: -2080629002377779666
+    second: shop_shu_3
+  - first:
+      213: 3068340992529794135
+    second: shop_shu_4
+  - first:
+      213: -2915051596034681207
+    second: shop_shu_5
+  - first:
+      213: -5197023214552571674
+    second: shop_shu_6
+  - first:
+      213: -4001151433975621612
+    second: shop_shu_7
+  - first:
+      213: -8406422098524658915
+    second: shop_shu_8
+  - first:
+      213: -7528435935359495723
+    second: shop_shu_9
+  - first:
+      213: -3475030553497240451
+    second: shop_shu_10
+  - first:
+      213: 3921663465456898621
+    second: shop_shu_11
+  - first:
+      213: 6124880460684717457
+    second: shop_shu_12
+  - first:
+      213: 2880582375280098529
+    second: shop_shu_13
+  - first:
+      213: -6823261063929239092
+    second: shop_shu_14
+  - first:
+      213: -4767848122786273258
+    second: shop_shu_15
+  - first:
+      213: 4427563635212559026
+    second: shop_shu_16
+  - first:
+      213: 1696423857341483856
+    second: shop_shu_17
+  - first:
+      213: -1990808099808993095
+    second: shop_shu_18
+  - first:
+      213: 1064830271902021229
+    second: shop_shu_19
+  - first:
+      213: -770139678369627955
+    second: shop_shu_20
+  - first:
+      213: 869859421778910014
+    second: shop_shu_21
+  - first:
+      213: 7018043241205504914
+    second: shop_shu_22
+  - first:
+      213: 2799469494349574074
+    second: shop_shu_23
+  - first:
+      213: -8332221089795728593
+    second: shop_shu_24
+  - first:
+      213: -5866844052794666568
+    second: shop_shu_25
+  - first:
+      213: 6931908313285488716
+    second: shop_shu_26
+  - first:
+      213: 6979620527166293412
+    second: shop_shu_27
+  - first:
+      213: -467618897967185958
+    second: shop_shu_28
+  - first:
+      213: 7101320372622284133
+    second: shop_shu_29
+  - first:
+      213: -1622594616851261864
+    second: shop_shu_30
+  - first:
+      213: 5400412268962696267
+    second: shop_shu_31
+  - first:
+      213: -2157381005502017705
+    second: shop_shu_32
+  - first:
+      213: -8819853852087067879
+    second: shop_shu_33
+  - first:
+      213: -3408084641753268411
+    second: shop_shu_34
+  - first:
+      213: 5550812665106958863
+    second: shop_shu_35
+  - first:
+      213: -5331693658416659577
+    second: shop_shu_36
+  - first:
+      213: -386340691408928510
+    second: shop_shu_37
+  - first:
+      213: 4775381164312586130
+    second: shop_shu_38
+  - first:
+      213: 768738125662709402
+    second: shop_shu_39
+  - first:
+      213: -802938565236983937
+    second: shop_shu_40
+  - first:
+      213: 7738878794755674354
+    second: shop_shu_41
+  - first:
+      213: -3394520810624529155
+    second: shop_shu_42
+  - first:
+      213: 1889173747340720562
+    second: shop_shu_43
+  - first:
+      213: 3631373332314737485
+    second: shop_shu_44
+  - first:
+      213: 7428539534789359807
+    second: shop_shu_45
+  - first:
+      213: -1090160869193136400
+    second: shop_shu_46
+  - first:
+      213: 1910585170436193302
+    second: shop_shu_47
+  - first:
+      213: -8398906800466922186
+    second: shop_shu_48
+  - first:
+      213: 6923451945909388394
+    second: shop_shu_49
+  - first:
+      213: -7049154667641956320
+    second: shop_shu_50
+  - first:
+      213: -8838264035054530976
+    second: shop_shu_51
+  - first:
+      213: 8101015977889157234
+    second: shop_shu_52
+  - first:
+      213: 7667589718023423428
+    second: shop_shu_53
+  - first:
+      213: -1036953353606905631
+    second: shop_shu_54
+  - first:
+      213: -5613122218613114947
+    second: shop_shu_55
+  - first:
+      213: -1852323734454033993
+    second: shop_shu_56
+  - first:
+      213: -4991159400155523530
+    second: shop_shu_57
+  - first:
+      213: 6716289157493619235
+    second: shop_shu_58
+  - first:
+      213: -255391510229831179
+    second: shop_shu_59
+  - first:
+      213: -4753946167044304778
+    second: shop_shu_60
+  - first:
+      213: 8432191573788499753
+    second: shop_shu_61
+  - first:
+      213: -1581552837515821090
+    second: shop_shu_62
+  - first:
+      213: 615080088346467487
+    second: shop_shu_63
+  - first:
+      213: -8787981313578601359
+    second: shop_shu_64
+  - first:
+      213: 462446594922754908
+    second: shop_shu_65
+  - first:
+      213: 4002247842558176365
+    second: shop_shu_66
+  - first:
+      213: -4889371014640471604
+    second: shop_shu_67
+  - first:
+      213: -2907079029294041725
+    second: shop_shu_68
+  - first:
+      213: -6809657433254898504
+    second: shop_shu_69
+  - first:
+      213: 2688225776557098466
+    second: shop_shu_70
+  - first:
+      213: 1234074859344932446
+    second: shop_shu_71
+  - first:
+      213: -5400684024373261487
+    second: shop_shu_72
+  - first:
+      213: -5861105126066698425
+    second: shop_shu_73
+  - first:
+      213: 1063986815031777923
+    second: shop_shu_74
+  - first:
+      213: -684314217463849718
+    second: shop_shu_75
+  - first:
+      213: 4411749232219508479
+    second: shop_shu_76
+  - first:
+      213: -2352956585037286723
+    second: shop_shu_77
+  - first:
+      213: -2621022240807260906
+    second: shop_shu_78
+  - first:
+      213: -1259859921199836953
+    second: shop_shu_79
+  - first:
+      213: 5820468846079550238
+    second: shop_shu_80
+  - first:
+      213: -680535310810307461
+    second: shop_shu_81
+  - first:
+      213: 3658575875755067197
+    second: shop_shu_82
+  - first:
+      213: -6002552397541395834
+    second: shop_shu_83
+  - first:
+      213: -3808207998925138414
+    second: shop_shu_84
+  - first:
+      213: 1565481199606143484
+    second: shop_shu_85
+  - first:
+      213: -6830695322855278245
+    second: shop_shu_86
+  - first:
+      213: -2898823013460066758
+    second: shop_shu_87
+  - first:
+      213: -9154897364157876403
+    second: shop_shu_88
+  - first:
+      213: -3427467505576514126
+    second: shop_shu_89
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shop_shu_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 354
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c7ed2c646eac170800000000000000
+      internalID: 8199619263172869234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_1
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 357
+        width: 25
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c638c906286f19240800000000000000
+      internalID: 4796886117953340268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 357
+        width: 25
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54bdfec5525fb4c60800000000000000
+      internalID: 7803600320171334469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_3
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 357
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e26a5eb22fe1023e0800000000000000
+      internalID: -2080629002377779666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 358
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754028d30efe49a20800000000000000
+      internalID: 3068340992529794135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 358
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 986da6c9408ab87d0800000000000000
+      internalID: -2915051596034681207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 358
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e0a22fdbe670e7b0800000000000000
+      internalID: -5197023214552571674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_7
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 358
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 418965548fd0978c0800000000000000
+      internalID: -4001151433975621612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_8
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 358
+        width: 25
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13a179f3a3665b80800000000000000
+      internalID: -8406422098524658915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 358
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d19c96776f958790800000000000000
+      internalID: -7528435935359495723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_10
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 358
+        width: 18
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7cfa238f1636cfc0800000000000000
+      internalID: -3475030553497240451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 309
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d329f2bd42c8c6630800000000000000
+      internalID: 3921663465456898621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 311
+        width: 19
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19de7d6f352fff450800000000000000
+      internalID: 6124880460684717457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_13
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 313
+        width: 64
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ec32d88862e9f720800000000000000
+      internalID: 2880582375280098529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_14
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 314
+        width: 64
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc96ebaa638ee41a0800000000000000
+      internalID: -6823261063929239092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_15
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 313
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618af4ab46335ddb0800000000000000
+      internalID: -4767848122786273258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_16
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 313
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b228410badd17d30800000000000000
+      internalID: 4427563635212559026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_17
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 313
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05b465d9288ea8710800000000000000
+      internalID: 1696423857341483856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_18
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 313
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b02aeab49a3f54e0800000000000000
+      internalID: -1990808099808993095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d667dc69d7907ce00800000000000000
+      internalID: 1064830271902021229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0485bfa0aef45f0800000000000000
+      internalID: -770139678369627955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 232
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b98af098c521c00800000000000000
+      internalID: 869859421778910014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_22
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b926a0529156160800000000000000
+      internalID: 7018043241205504914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_23
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 232
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abfaf324ca6b9d620800000000000000
+      internalID: 2799469494349574074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_24
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 271
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b15b890110e5c80800000000000000
+      internalID: -8332221089795728593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_25
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 231
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b19f88fa68c49ea0800000000000000
+      internalID: -5866844052794666568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_26
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4075f452e5133060800000000000000
+      internalID: 6931908313285488716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_27
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 232
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a585ccc3e79cd060800000000000000
+      internalID: 6979620527166293412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_28
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 271
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adff760071fa289f0800000000000000
+      internalID: -467618897967185958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_29
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 232
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56555662145fc8260800000000000000
+      internalID: 7101320372622284133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_30
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 271
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8569e18fac26b79e0800000000000000
+      internalID: -1622594616851261864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_31
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 271
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4cce24985e12fa40800000000000000
+      internalID: 5400412268962696267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_32
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 232
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75f80e1e7617f02e0800000000000000
+      internalID: -2157381005502017705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_33
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 271
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b5d7fa6a5999580800000000000000
+      internalID: -8819853852087067879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 193
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54ff4db331d04b0d0800000000000000
+      internalID: -3408084641753268411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_35
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 193
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0a807e95b2780d40800000000000000
+      internalID: 5550812665106958863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_36
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 193
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7834fdebdd40206b0800000000000000
+      internalID: -5331693658416659577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_37
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 193
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 201ca46203173aaf0800000000000000
+      internalID: -386340691408928510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_38
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 193
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29761fd2edf854240800000000000000
+      internalID: 4775381164312586130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_39
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 232
+        width: 48
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a96ec69904b1baa00800000000000000
+      internalID: 768738125662709402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_40
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 193
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77769a01a36bd4f0800000000000000
+      internalID: -802938565236983937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_41
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 193
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f01731f245066b60800000000000000
+      internalID: 7738878794755674354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 155
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfccd04ce4d34e0d0800000000000000
+      internalID: -3394520810624529155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_43
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 155
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b9bc319381b73a10800000000000000
+      internalID: 1889173747340720562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_44
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 155
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b427f4eca356230800000000000000
+      internalID: 3631373332314737485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_45
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 155
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb8b01b4959771760800000000000000
+      internalID: 7428539534789359807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_46
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 155
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f646b32778fed0f0800000000000000
+      internalID: -1090160869193136400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_47
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 193
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c7afcf613c38a10800000000000000
+      internalID: 1910585170436193302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_48
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 156
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6357e88a3c6117b80800000000000000
+      internalID: -8398906800466922186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_49
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 156
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a648a6fdcda051060800000000000000
+      internalID: 6923451945909388394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_50
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 155
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0281a648d2f5c2e90800000000000000
+      internalID: -7049154667641956320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_51
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 155
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06ec67fefad285580800000000000000
+      internalID: -8838264035054530976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 117
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270d8d16c179c6070800000000000000
+      internalID: 8101015977889157234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_53
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 118
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c549325930c86a60800000000000000
+      internalID: 7667589718023423428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_54
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 118
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e04c9d3b600c91f0800000000000000
+      internalID: -1036953353606905631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_55
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 117
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db776bee41f2a12b0800000000000000
+      internalID: -5613122218613114947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_56
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 117
+        width: 20
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1a7d6a0693b46e0800000000000000
+      internalID: -1852323734454033993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_57
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 117
+        width: 19
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636d06848f6dbbab0800000000000000
+      internalID: -4991159400155523530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_58
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 119
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32af631876d053d50800000000000000
+      internalID: 6716289157493619235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_59
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 119
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f1b91a46caa47cf0800000000000000
+      internalID: -255391510229831179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_60
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 119
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6709ef70627960eb0800000000000000
+      internalID: -4753946167044304778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 81
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f94b98f89250570800000000000000
+      internalID: 8432191573788499753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_62
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 83
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edfbb5ed2123d0ae0800000000000000
+      internalID: -1581552837515821090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_63
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 85
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9c9e4ed414398800800000000000000
+      internalID: 615080088346467487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_64
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 85
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17470675e81da0680800000000000000
+      internalID: -8787981313578601359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_65
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 85
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c53b5f95ab0fa6600800000000000000
+      internalID: 462446594922754908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_66
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 85
+        width: 43
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6ce0ce3537da8730800000000000000
+      internalID: 4002247842558176365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_67
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 85
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc1734997f6752cb0800000000000000
+      internalID: -4889371014640471604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_68
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 85
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385f0f4760bf7a7d0800000000000000
+      internalID: -2907079029294041725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_69
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 85
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b45eb0c4ac3f71a0800000000000000
+      internalID: -6809657433254898504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e50cb7d91f7e4520800000000000000
+      internalID: 2688225776557098466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_71
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 24
+        width: 36
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5eae71db80502110800000000000000
+      internalID: 1234074859344932446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_72
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 49
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15bca1f6e7aec05b0800000000000000
+      internalID: -5400684024373261487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_73
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 24
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 747c299f0fb29aea0800000000000000
+      internalID: -5861105126066698425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_74
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 28
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38a1babfe5a04ce00800000000000000
+      internalID: 1063986815031777923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_75
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 49
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0d515948d3d086f0800000000000000
+      internalID: -684314217463849718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_76
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 48
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffecb806d8ea93d30800000000000000
+      internalID: 4411749232219508479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_77
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 49
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db2bfe0d37e985fd0800000000000000
+      internalID: -2352956585037286723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_78
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 48
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61de844a82240abd0800000000000000
+      internalID: -2621022240807260906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_79
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 48
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e0d122a314148ee0800000000000000
+      internalID: -1259859921199836953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_80
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 48
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13acccc39576c050800000000000000
+      internalID: 5820468846079550238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_81
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 50
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b74aa0e8db04e86f0800000000000000
+      internalID: -680535310810307461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_82
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 50
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d37c132006fd5c230800000000000000
+      internalID: 3658575875755067197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_83
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68230e6b566a2bca0800000000000000
+      internalID: -6002552397541395834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_84
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 24
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21614417007862bc0800000000000000
+      internalID: -3808207998925138414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_85
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 28
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf993155bd4b9b510800000000000000
+      internalID: 1565481199606143484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_86
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 28
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b59f9406bce7431a0800000000000000
+      internalID: -6830695322855278245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_87
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 28
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3e3cffe3df45c7d0800000000000000
+      internalID: -2898823013460066758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_88
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 30
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d47b53e1a5543f080800000000000000
+      internalID: -9154897364157876403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_shu_89
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 31
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bdeae296703f60d0800000000000000
+      internalID: -3427467505576514126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      shop_shu_0: 8199619263172869234
+      shop_shu_1: 4796886117953340268
+      shop_shu_10: -3475030553497240451
+      shop_shu_11: 3921663465456898621
+      shop_shu_12: 6124880460684717457
+      shop_shu_13: 2880582375280098529
+      shop_shu_14: -6823261063929239092
+      shop_shu_15: -4767848122786273258
+      shop_shu_16: 4427563635212559026
+      shop_shu_17: 1696423857341483856
+      shop_shu_18: -1990808099808993095
+      shop_shu_19: 1064830271902021229
+      shop_shu_2: 7803600320171334469
+      shop_shu_20: -770139678369627955
+      shop_shu_21: 869859421778910014
+      shop_shu_22: 7018043241205504914
+      shop_shu_23: 2799469494349574074
+      shop_shu_24: -8332221089795728593
+      shop_shu_25: -5866844052794666568
+      shop_shu_26: 6931908313285488716
+      shop_shu_27: 6979620527166293412
+      shop_shu_28: -467618897967185958
+      shop_shu_29: 7101320372622284133
+      shop_shu_3: -2080629002377779666
+      shop_shu_30: -1622594616851261864
+      shop_shu_31: 5400412268962696267
+      shop_shu_32: -2157381005502017705
+      shop_shu_33: -8819853852087067879
+      shop_shu_34: -3408084641753268411
+      shop_shu_35: 5550812665106958863
+      shop_shu_36: -5331693658416659577
+      shop_shu_37: -386340691408928510
+      shop_shu_38: 4775381164312586130
+      shop_shu_39: 768738125662709402
+      shop_shu_4: 3068340992529794135
+      shop_shu_40: -802938565236983937
+      shop_shu_41: 7738878794755674354
+      shop_shu_42: -3394520810624529155
+      shop_shu_43: 1889173747340720562
+      shop_shu_44: 3631373332314737485
+      shop_shu_45: 7428539534789359807
+      shop_shu_46: -1090160869193136400
+      shop_shu_47: 1910585170436193302
+      shop_shu_48: -8398906800466922186
+      shop_shu_49: 6923451945909388394
+      shop_shu_5: -2915051596034681207
+      shop_shu_50: -7049154667641956320
+      shop_shu_51: -8838264035054530976
+      shop_shu_52: 8101015977889157234
+      shop_shu_53: 7667589718023423428
+      shop_shu_54: -1036953353606905631
+      shop_shu_55: -5613122218613114947
+      shop_shu_56: -1852323734454033993
+      shop_shu_57: -4991159400155523530
+      shop_shu_58: 6716289157493619235
+      shop_shu_59: -255391510229831179
+      shop_shu_6: -5197023214552571674
+      shop_shu_60: -4753946167044304778
+      shop_shu_61: 8432191573788499753
+      shop_shu_62: -1581552837515821090
+      shop_shu_63: 615080088346467487
+      shop_shu_64: -8787981313578601359
+      shop_shu_65: 462446594922754908
+      shop_shu_66: 4002247842558176365
+      shop_shu_67: -4889371014640471604
+      shop_shu_68: -2907079029294041725
+      shop_shu_69: -6809657433254898504
+      shop_shu_7: -4001151433975621612
+      shop_shu_70: 2688225776557098466
+      shop_shu_71: 1234074859344932446
+      shop_shu_72: -5400684024373261487
+      shop_shu_73: -5861105126066698425
+      shop_shu_74: 1063986815031777923
+      shop_shu_75: -684314217463849718
+      shop_shu_76: 4411749232219508479
+      shop_shu_77: -2352956585037286723
+      shop_shu_78: -2621022240807260906
+      shop_shu_79: -1259859921199836953
+      shop_shu_8: -8406422098524658915
+      shop_shu_80: 5820468846079550238
+      shop_shu_81: -680535310810307461
+      shop_shu_82: 3658575875755067197
+      shop_shu_83: -6002552397541395834
+      shop_shu_84: -3808207998925138414
+      shop_shu_85: 1565481199606143484
+      shop_shu_86: -6830695322855278245
+      shop_shu_87: -2898823013460066758
+      shop_shu_88: -9154897364157876403
+      shop_shu_89: -3427467505576514126
+      shop_shu_9: -7528435935359495723
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

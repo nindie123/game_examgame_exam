@@ -1,0 +1,16 @@
+{
+    "name": "BagElimination.Presentation",
+    "rootNamespace": "BagElimination.Presentation",
+    "references": [
+        "BagElimination.Rules"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
