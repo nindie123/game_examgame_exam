@@ -1,0 +1,38 @@
+# Unity generated content (do not commit)
+UnityDemo/[Ll]ibrary/
+UnityDemo/[Tt]emp/
+UnityDemo/[Oo]bj/
+UnityDemo/[Bb]uild/
+UnityDemo/[Bb]uilds/
+UnityDemo/[Ll]ogs/
+UnityDemo/[Uu]ser[Ss]ettings/
+UnityDemo/MemoryCaptures/
+UnityDemo/Recordings/
+UnityDemo/ExportedObj/
+UnityDemo/sysinfo.txt
+
+# IDE and generated project files
+UnityDemo/.vs/
+UnityDemo/.idea/
+UnityDemo/.vscode/
+UnityDemo/*.csproj
+UnityDemo/*.sln
+UnityDemo/*.slnx
+UnityDemo/*.user
+UnityDemo/*.pidb
+UnityDemo/*.booproj
+UnityDemo/*.svd
+UnityDemo/*.pdb
+UnityDemo/*.mdb
+UnityDemo/*.opendb
+UnityDemo/*.VC.db
+
+# Unity local cache and imported artifacts
+UnityDemo/Assets/AssetStoreTools*
+UnityDemo/Assets/Plugins/Editor/JetBrains*
+
+# OS / archive metadata
+.DS_Store
+Thumbs.db
+__MACOSX/
+*.tmp
