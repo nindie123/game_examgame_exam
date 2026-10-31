@@ -36,73 +36,324 @@ namespace BagElimination.Presentation
             foreach(Transform child in transform) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
             _rendered=false; _board=null;
         }
-        public IEnumerator PlayStep(SimulationStep step)
+        private const float SwapSeconds = .18f;
+        private const float ClearSeconds = .26f;
+        private const float CollectSeconds = .56f;
+        private const float LandSeconds = .10f;
+        private Sprite _ringSprite;
+
+        private sealed class Motion
         {
-            if(step.Kind=="Ready" || step.Kind=="Victory") yield break;
-            var old=new Dictionary<int,Transform>(); var oldCells=new Dictionary<int,BoardCell>();
-            foreach(var p in _board.EnumeratePositions())
+            public Transform Transform;
+            public readonly List<Vector3> Points = new List<Vector3>();
+            public Vector3 Scale;
+            public float Delay;
+        }
+
+        public IEnumerator PlayFalls(IReadOnlyList<SimulationStep> steps)
+        {
+            var tracks = new Dictionary<int, Motion>();
+            foreach (var p in _board.EnumeratePositions())
             {
-                var cell=_board.GetCell(p); var tr=_pieceTransforms[p.Row,p.Column];
-                if(cell.IsOccupied && tr!=null) { old[cell.ObjectId]=tr; oldCells[cell.ObjectId]=cell; }
+                var cell = _board.GetCell(p);
+                if (!cell.IsOccupied) continue;
+                var tr = _pieceTransforms[p.Row, p.Column];
+                var track = new Motion { Transform = tr, Scale = tr.localScale };
+                track.Points.Add(tr.localPosition);
+                tracks.Add(cell.ObjectId, track);
             }
-            var next=new Transform[step.Board.Height,step.Board.Width];
-            var moving=new List<Transform>(); var starts=new List<Vector3>(); var ends=new List<Vector3>();
-            var retained=new HashSet<int>();
-            foreach(var p in step.Board.EnumeratePositions())
-            {
-                var cell=step.Board.GetCell(p); if(!cell.IsOccupied)continue;
-                retained.Add(cell.ObjectId); Vector3 target=CellCenter(p.Row,p.Column);
-                if(!old.TryGetValue(cell.ObjectId,out var tr))
+            var spawnDepth = new int[_board.Width];
+            foreach (var step in steps)
+                foreach (var p in step.Board.EnumeratePositions())
                 {
-                    var sr=CreateChildSprite("Piece_"+cell.ObjectId,PieceOrder,_boardRoot); sr.sprite=PieceSpriteFor(cell);
-                    SetSpriteSize(sr,Vector2.one*CellWorldSize*PieceScaleFactor); tr=sr.transform;
-                    tr.localPosition=step.Kind=="Refill"?target+Vector3.up*CellSpacing:target;
+                    var cell = step.Board.GetCell(p);
+                    if (!cell.IsOccupied) continue;
+                    Vector3 position = CellCenter(p.Row, p.Column);
+                    if (!tracks.TryGetValue(cell.ObjectId, out var track))
+                    {
+                        var sr = CreateChildSprite("Piece_" + cell.ObjectId, PieceOrder, _boardRoot);
+                        sr.sprite = PieceSpriteFor(cell);
+                        SetSpriteSize(sr, Vector2.one * CellWorldSize * PieceScaleFactor);
+                        track = new Motion { Transform = sr.transform, Scale = sr.transform.localScale };
+                        // Later arrivals in the same column start higher, preserving refill order.
+                        track.Points.Add(CellCenter(0, p.Column) + Vector3.up * CellSpacing * (++spawnDepth[p.Column]));
+                        sr.transform.localPosition = track.Points[0];
+                        tracks.Add(cell.ObjectId, track);
+                    }
+                    if ((track.Points[track.Points.Count - 1] - position).sqrMagnitude > .0001f)
+                        track.Points.Add(position);
                 }
-                next[p.Row,p.Column]=tr; moving.Add(tr); starts.Add(tr.localPosition); ends.Add(target);
-            }
-            var removed=new List<Transform>(); var removedStart=new List<Vector3>(); var removedScale=new List<Vector3>(); var bags=new List<bool>();
-            foreach(var entry in old) if(!retained.Contains(entry.Key))
-            { removed.Add(entry.Value); removedStart.Add(entry.Value.position); removedScale.Add(entry.Value.localScale); bags.Add(oldCells[entry.Key].Type==ElementType.Backpack); }
-            _board=step.Board; RefreshBackpackCount();
-            if(step.Origin>=0) StartCoroutine(EffectPulse(step));
-            float duration=step.Kind=="Fall"?.035f:step.Kind=="Refill"?.055f:step.Kind=="Swap"?.17f:.32f;
-            float elapsed=0;
-            while(elapsed<duration)
+            var final = steps[steps.Count - 1].Board;
+            var next = new Transform[final.Height, final.Width];
+            int maxSegments = 1;
+            foreach (var p in final.EnumeratePositions())
             {
-                elapsed+=Time.deltaTime; float t=Mathf.Clamp01(elapsed/duration); float ease=t*t*(3-2*t);
-                for(int i=0;i<moving.Count;i++) moving[i].localPosition=Vector3.Lerp(starts[i],ends[i],ease);
-                for(int i=0;i<removed.Count;i++)
+                var cell = final.GetCell(p);
+                if (!cell.IsOccupied) continue;
+                var track = tracks[cell.ObjectId];
+                next[p.Row, p.Column] = track.Transform;
+                track.Delay = p.Column * .012f;
+                maxSegments = Mathf.Max(maxSegments, track.Points.Count - 1);
+            }
+            float duration = Mathf.Clamp(.16f + maxSegments * .045f, .25f, .65f);
+            _board = final;
+            for (float elapsed = 0; elapsed < duration + .1f + LandSeconds; elapsed += Time.deltaTime)
+            {
+                foreach (var track in tracks.Values)
                 {
-                    if(bags[i]) removed[i].position=Vector3.Lerp(removedStart[i],_countText.transform.position,ease)+Vector3.up*Mathf.Sin(t*Mathf.PI)*.5f;
-                    removed[i].localScale=removedScale[i]*(1-t);
+                    if (track.Points.Count < 2) continue;
+                    float t = Mathf.Clamp01((elapsed - track.Delay) / duration);
+                    // Accelerate into the fall; retain all recorded turns around obstacles.
+                    float progress = t * t * (track.Points.Count - 1);
+                    int segment = Mathf.Min(Mathf.FloorToInt(progress), track.Points.Count - 2);
+                    track.Transform.localPosition = Vector3.Lerp(track.Points[segment], track.Points[segment + 1], progress - segment);
+                    float landing = Mathf.Clamp01((elapsed - track.Delay - duration) / LandSeconds);
+                    float squash = t >= 1 ? Mathf.Sin(landing * Mathf.PI) * .13f : 0;
+                    track.Transform.localScale = Vector3.Scale(track.Scale, new Vector3(1 + squash, 1 - squash, 1));
                 }
                 yield return null;
             }
-            for(int i=0;i<moving.Count;i++)moving[i].localPosition=ends[i];
-            foreach(var tr in removed)Destroy(tr.gameObject);
-            _pieceTransforms=next;
-        }
-        private IEnumerator EffectPulse(SimulationStep step)
-        {
-            var flash=CreateChildSprite("Effect",40,_boardRoot); flash.sprite=WhiteSprite();
-            flash.transform.localPosition=CellCenter(step.Origin/_board.Width,step.Origin%_board.Width);
-            Vector3 size=step.Kind=="Rocket"?new Vector3(_board.Width*CellSpacing,.15f,1):new Vector3(2.5f,2.5f,1);
-            // Read direction from the old displayed object at the trigger position where available.
-            if(step.Kind=="Rocket")
+            foreach (var track in tracks.Values)
             {
-                var tr=_pieceTransforms[step.Origin/_board.Width,step.Origin%_board.Width];
-                if(tr!=null && tr.GetComponent<SpriteRenderer>().sprite==PropSprite(BoardCell.CreateRocket(1,RocketDirection.Vertical))) size=new Vector3(.15f,_board.Height*CellSpacing,1);
+                track.Transform.localPosition = track.Points[track.Points.Count - 1];
+                track.Transform.localScale = track.Scale;
             }
-            for(float t=0;t<.25f;t+=Time.deltaTime)
-            { flash.transform.localScale=size*(1+t); flash.color=new Color(1,.85f,.2f,.7f*(1-t/.25f)); yield return null; }
+            _pieceTransforms = next;
+        }
+
+        public IEnumerator PlayStep(SimulationStep step)
+        {
+            if (step.Kind == "Ready" || step.Kind == "Victory") yield break;
+            var before = _board;
+            var old = new Dictionary<int, Transform>();
+            var oldCells = new Dictionary<int, BoardCell>();
+            foreach (var p in before.EnumeratePositions())
+            {
+                var cell = before.GetCell(p);
+                var tr = _pieceTransforms[p.Row, p.Column];
+                if (cell.IsOccupied && tr != null) { old[cell.ObjectId] = tr; oldCells[cell.ObjectId] = cell; }
+            }
+            var next = new Transform[step.Board.Height, step.Board.Width];
+            var moving = new List<Motion>();
+            var created = new HashSet<int>();
+            var retained = new HashSet<int>();
+            foreach (var p in step.Board.EnumeratePositions())
+            {
+                var cell = step.Board.GetCell(p);
+                if (!cell.IsOccupied) continue;
+                retained.Add(cell.ObjectId);
+                Vector3 target = CellCenter(p.Row, p.Column);
+                if (!old.TryGetValue(cell.ObjectId, out var tr))
+                {
+                    var sr = CreateChildSprite("Piece_" + cell.ObjectId, PieceOrder, _boardRoot);
+                    sr.sprite = PieceSpriteFor(cell);
+                    SetSpriteSize(sr, Vector2.one * CellWorldSize * PieceScaleFactor);
+                    tr = sr.transform;
+                    tr.localPosition = target;
+                    created.Add(cell.ObjectId);
+                    StartCoroutine(SparkBurst(tr.position, new Color(1, .8f, .25f), 10));
+                }
+                next[p.Row, p.Column] = tr;
+                var motion = new Motion { Transform = tr, Scale = tr.localScale, Delay = created.Contains(cell.ObjectId) ? 1 : 0 };
+                motion.Points.Add(tr.localPosition); motion.Points.Add(target);
+                moving.Add(motion);
+            }
+            var removed = new List<Motion>();
+            var bags = new List<bool>();
+            foreach (var entry in old)
+            {
+                if (retained.Contains(entry.Key)) continue;
+                bool bag = oldCells[entry.Key].Type == ElementType.Backpack;
+                var track = new Motion { Transform = entry.Value, Scale = entry.Value.localScale, Delay = bag ? (removed.Count % 5) * .025f : 0 };
+                track.Points.Add(entry.Value.position);
+                removed.Add(track); bags.Add(bag);
+                entry.Value.GetComponent<SpriteRenderer>().sortingOrder = bag ? 80 : 10;
+                StartCoroutine(SparkBurst(entry.Value.position, bag ? new Color(1, .7f, .15f) : Color.white, bag ? 8 : 5));
+            }
+            if (step.Origin >= 0)
+            {
+                var prop = before.GetCell(step.Origin / before.Width, step.Origin % before.Width);
+                StartCoroutine(EffectPulse(step, prop, before));
+            }
+            _board = step.Board;
+            RefreshBackpackCount();
+            bool hasBags = bags.Contains(true);
+            float duration = step.Kind == "Swap" ? SwapSeconds : hasBags ? CollectSeconds + .1f : step.Origin >= 0 ? .45f : ClearSeconds;
+            Vector3 countScale = _countText.transform.localScale;
+            for (float elapsed = 0; elapsed < duration; elapsed += Time.deltaTime)
+            {
+                float t = Mathf.Clamp01(elapsed / duration);
+                float ease = Mathf.SmoothStep(0, 1, t);
+                foreach (var motion in moving)
+                {
+                    motion.Transform.localPosition = Vector3.Lerp(motion.Points[0], motion.Points[1], ease);
+                    if (motion.Delay > 0)
+                    {
+                        float pop = Mathf.Clamp01(elapsed / ClearSeconds);
+                        motion.Transform.localScale = motion.Scale * (pop + Mathf.Sin(pop * Mathf.PI) * .35f);
+                    }
+                }
+                for (int i = 0; i < removed.Count; i++)
+                {
+                    var motion = removed[i];
+                    float p = Mathf.Clamp01((elapsed - motion.Delay) / (bags[i] ? CollectSeconds : ClearSeconds));
+                    if (bags[i])
+                    {
+                        Vector3 start = motion.Points[0], end = _countText.transform.position;
+                        Vector3 control = (start + end) * .5f + Vector3.right * (i % 2 == 0 ? 1.1f : -1.1f) + Vector3.up * 1.2f;
+                        float fly = p * p;
+                        motion.Transform.position = (1 - fly) * (1 - fly) * start + 2 * (1 - fly) * fly * control + fly * fly * end;
+                        motion.Transform.localScale = motion.Scale * Mathf.Lerp(1.08f, .18f, fly);
+                        motion.Transform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(p * Mathf.PI) * 18);
+                    }
+                    else
+                    {
+                        float scale = p < .22f ? Mathf.Lerp(1, 1.22f, p / .22f) : Mathf.Lerp(1.22f, 0, (p - .22f) / .78f);
+                        motion.Transform.localScale = motion.Scale * scale;
+                    }
+                    var sr = motion.Transform.GetComponent<SpriteRenderer>();
+                    sr.color = new Color(1, 1, 1, 1 - Mathf.InverseLerp(.7f, 1, p));
+                }
+                if (hasBags) _countText.transform.localScale = countScale * (1 + .14f * Mathf.Sin(t * Mathf.PI * 2) * (1 - t));
+                yield return null;
+            }
+            foreach (var motion in moving) { motion.Transform.localPosition = motion.Points[1]; motion.Transform.localScale = motion.Scale; }
+            foreach (var motion in removed) Destroy(motion.Transform.gameObject);
+            _countText.transform.localScale = countScale;
+            _pieceTransforms = next;
+        }
+
+        private Sprite RingSprite()
+        {
+            if (_ringSprite != null) return _ringSprite;
+            var tex = new Texture2D(64, 64);
+            for (int y = 0; y < 64; y++) for (int x = 0; x < 64; x++)
+            {
+                float distance = new Vector2(x - 31.5f, y - 31.5f).magnitude;
+                float alpha = Mathf.Clamp01(1 - Mathf.Abs(distance - 26) / 3);
+                tex.SetPixel(x, y, new Color(1, 1, 1, alpha));
+            }
+            tex.Apply();
+            _ringSprite = Sprite.Create(tex, new Rect(0, 0, 64, 64), new Vector2(.5f, .5f), 64);
+            return _ringSprite;
+        }
+
+        private IEnumerator SparkBurst(Vector3 origin, Color color, int count)
+        {
+            var sparks = new SpriteRenderer[count];
+            for (int i = 0; i < count; i++)
+            {
+                sparks[i] = CreateChildSprite("Spark", 85);
+                sparks[i].sprite = WhiteSprite();
+                sparks[i].transform.position = origin;
+            }
+            const float lifetime = .4f;
+            for (float elapsed = 0; elapsed < lifetime; elapsed += Time.deltaTime)
+            {
+                float t = elapsed / lifetime;
+                for (int i = 0; i < count; i++)
+                {
+                    // Purely visual deterministic spread: never consumes gameplay random state.
+                    float angle = i * Mathf.PI * 2 / count;
+                    Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+                    sparks[i].transform.position = origin + direction * (.18f + .55f * t) + Vector3.down * t * t * .3f;
+                    sparks[i].transform.localScale = Vector3.one * (.07f * (1 - t));
+                    sparks[i].transform.localRotation = Quaternion.Euler(0, 0, i * 43 + t * 180);
+                    sparks[i].color = new Color(color.r, color.g, color.b, 1 - t);
+                }
+                yield return null;
+            }
+            foreach (var spark in sparks) Destroy(spark.gameObject);
+        }
+
+        private IEnumerator EffectPulse(SimulationStep step, BoardCell prop, BoardState before)
+        {
+            Vector3 origin = _boardRoot.transform.TransformPoint(CellCenter(step.Origin / _board.Width, step.Origin % _board.Width));
+            var flash = CreateChildSprite("Effect", 45);
+            flash.transform.position = origin;
+            bool rocket = step.Kind == "Rocket";
+            flash.sprite = rocket ? WhiteSprite() : RingSprite();
+            bool horizontal = prop.Direction == RocketDirection.Horizontal;
+            if (rocket)
+            {
+                // Center the beam on the board, not on an off-center trigger cell.
+                Vector3 local = CellCenter(step.Origin / _board.Width, step.Origin % _board.Width);
+                if (horizontal) local.x = 0;
+                else local.y = (CellCenter(0, 0).y + CellCenter(_board.Height - 1, 0).y) * .5f;
+                flash.transform.position = _boardRoot.transform.TransformPoint(local);
+            }
+            Vector3 target = origin;
+            if (step.Kind == "Propeller")
+            {
+                // Remote target follows the rules' row-major/right-to-left selection,
+                // excluding backpacks already hit by the local four-neighbour effect.
+                bool found = false;
+                int row = step.Origin / before.Width, column = step.Origin % before.Width;
+                for (int r = 0; r < before.Height && !found; r++)
+                    for (int c = before.Width - 1; c >= 0; c--)
+                        if (before.GetCell(r, c).Type == ElementType.Backpack
+                            && Mathf.Abs(r - row) + Mathf.Abs(c - column) > 1
+                            && !step.Board.GetCell(r, c).IsOccupied)
+                        { target = _boardRoot.transform.TransformPoint(CellCenter(r, c)); found = true; break; }
+                flash.sprite = PropSprite(prop);
+            }
+            const float seconds = .42f;
+            for (float elapsed = 0; elapsed < seconds; elapsed += Time.deltaTime)
+            {
+                float t = elapsed / seconds;
+                if (rocket)
+                {
+                    float length = (horizontal ? _board.Width : _board.Height) * CellSpacing;
+                    flash.transform.localScale = horizontal ? new Vector3(length, .24f * (1 - t), 1) : new Vector3(.24f * (1 - t), length, 1);
+                }
+                else if (step.Kind == "Propeller")
+                {
+                    flash.transform.position = Vector3.Lerp(origin, target, Mathf.SmoothStep(0, 1, t)) + Vector3.up * Mathf.Sin(t * Mathf.PI) * .7f;
+                    flash.transform.localScale = Vector3.one * .85f;
+                    flash.transform.localRotation = Quaternion.Euler(0, 0, t * 1080);
+                }
+                else flash.transform.localScale = Vector3.one * Mathf.Lerp(.4f, 5 * CellSpacing, 1 - (1 - t) * (1 - t));
+                flash.color = new Color(1, .85f, .35f, 1 - t);
+                yield return null;
+            }
             Destroy(flash.gameObject);
         }
+
         public IEnumerator Celebrate()
         {
-            yield return new WaitForSeconds(.35f); _boardRoot.SetActive(false);
-            _hintText.transform.localPosition=new Vector3(0,1.8f,0); _hintText.characterSize=.13f; ShowHint("Great!");
-            var reward=CreateChildSprite("Reward",70); reward.sprite=_goalSprite; SetSpriteSize(reward,new Vector2(2.5f,2.5f));
-            for(float t=0;t<1;t+=Time.deltaTime) { reward.transform.localPosition=new Vector3(0,Mathf.Sin(t*Mathf.PI)*.5f,0); yield return null; }
+            // Finish already submitted spark and collection visuals before retiring the board.
+            yield return new WaitForSeconds(.4f);
+            Vector3 boardScale = _boardRoot.transform.localScale;
+            Vector3 boardPosition = _boardRoot.transform.localPosition;
+            for (float elapsed = 0; elapsed < .35f; elapsed += Time.deltaTime)
+            {
+                float t = Mathf.SmoothStep(0, 1, elapsed / .35f);
+                _boardRoot.transform.localScale = boardScale * (1 - t);
+                _boardRoot.transform.localPosition = boardPosition + Vector3.down * t;
+                yield return null;
+            }
+            _boardRoot.SetActive(false);
+            _hintText.transform.localPosition = new Vector3(0, 1.8f, 0);
+            _hintText.characterSize = .13f;
+            ShowHint("Great!");
+            var reward = CreateChildSprite("Reward", 70);
+            reward.sprite = _goalSprite;
+            SetSpriteSize(reward, new Vector2(2.5f, 2.5f));
+            Vector3 rewardScale = reward.transform.localScale;
+            for (float elapsed = 0; elapsed < .8f; elapsed += Time.deltaTime)
+            {
+                float t = Mathf.Clamp01(elapsed / .8f);
+                float pop = 1 + 2.7f * Mathf.Pow(t - 1, 3) + 1.7f * Mathf.Pow(t - 1, 2);
+                reward.transform.localScale = rewardScale * pop;
+                reward.transform.localPosition = Vector3.up * Mathf.Sin(t * Mathf.PI) * .35f;
+                _hintText.transform.localScale = Vector3.one * pop;
+                yield return null;
+            }
+            reward.transform.localScale = rewardScale;
+            reward.transform.localPosition = Vector3.zero;
+            _hintText.transform.localScale = Vector3.one;
+            StartCoroutine(SparkBurst(new Vector3(-1.3f, 1.4f, 0), new Color(1, .75f, .15f), 20));
+            yield return SparkBurst(new Vector3(1.3f, 1.4f, 0), new Color(.4f, .85f, 1), 20);
         }
     }
 }

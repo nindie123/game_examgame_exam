@@ -57,14 +57,41 @@ namespace BagElimination.Presentation
             if(!SwapEvaluator.Evaluate(_board,a,b).Outcome.IsLegal())
             { yield return _view.AnimateSwap(a.Row,a.Column,b.Row,b.Column,0.16f); yield return _view.AnimateSwap(a.Row,a.Column,b.Row,b.Column,0.16f); _busy=false; yield break; }
             var iterator=TurnSolver.Resolve(_board,a,b,_context).GetEnumerator();
+            SimulationStep pending = null;
             using(iterator)
             while(session==_session)
             {
                 bool next=false; string error=null;
-                try { next=iterator.MoveNext(); } catch(Exception ex) { error=ex.Message; Debug.LogException(ex); }
+                try { next=pending != null || iterator.MoveNext(); } catch(Exception ex) { error=ex.Message; Debug.LogException(ex); }
                 if(error!=null) { _status="Resolution stopped - press Restart"; _demo=false; yield break; }
                 if(!next) break;
-                var step=iterator.Current; _board=step.Board;
+                var step = pending ?? iterator.Current;
+                pending = null;
+                if (step.Kind == "Fall" || step.Kind == "Refill")
+                {
+                    // Keep every rules snapshot for the view's actual paths, but animate the
+                    // whole gravity phase together instead of pausing for each cell movement.
+                    var falls = new List<SimulationStep> { step };
+                    string gravityError = null;
+                    try
+                    {
+                        while (iterator.MoveNext())
+                        {
+                            var following = iterator.Current;
+                            if (following.Kind != "Fall" && following.Kind != "Refill")
+                            { pending = following; break; }
+                            falls.Add(following);
+                        }
+                    }
+                    catch (Exception ex) { gravityError = ex.Message; Debug.LogException(ex); }
+                    _board = falls[falls.Count - 1].Board;
+                    yield return _view.PlayFalls(falls);
+                    if (session != _session) yield break;
+                    if (gravityError != null)
+                    { _status = "Resolution stopped - press Restart"; _demo = false; yield break; }
+                    continue;
+                }
+                _board=step.Board;
                 _status=step.Kind=="Ready"?"Swap adjacent pieces":step.Kind;
                 yield return _view.PlayStep(step);
                 if(session!=_session) yield break;

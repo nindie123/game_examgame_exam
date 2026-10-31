@@ -500,7 +500,7 @@ namespace BagElimination.Presentation
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / duration);
+                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
                 first.localPosition = Vector3.Lerp(firstStart, secondStart, t);
                 second.localPosition = Vector3.Lerp(secondStart, firstStart, t);
                 yield return null;
