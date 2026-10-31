@@ -1,0 +1,32 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 29828)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 24488)
+VBCSCompiler prewarm took 48.17 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.7f1 (b22767f04f04) revision 11675495'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Connection to channel LicenseClient-zhllj refused
+OS: 'Windows 11  (10.0.26300) CoreCountrySpecific' Language: 'zh' Physical Memory: 16024 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-31T07:49:51Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 36668)
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'wmiOpened'
+Assertion failed on expression: 'ERROR_SUCCESS == status'
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.7f1\Editor\Unity.exe
+-batchmode
+-nographics
+-projectPath
+C:\Users\zhllj\Desktop\GameExam\UnityDemo
+-runTests
+-testPlatform
+EditMode
+-testResults
+C:\Users\zhllj\Desktop\GameExam\UnityDemo\Docs\CurrentEditMode.xml
+-logFile
+C:\Users\zhllj\Desktop\GameExam\UnityDemo\Docs\CurrentEditMode.log
+Successfully changed project path to: C:\Users\zhllj\Desktop\GameExam\UnityDemo
+C:/Users/zhllj/Desktop/GameExam/UnityDemo
+[ExitDontLaunchBugReporter] Exiting without the bug reporter. Application will exit with return code 1

@@ -1,185 +1,90 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using BagElimination.Rules.Board;
-using BagElimination.Rules.Resolution;
+using BagElimination.Rules.Config;
+using BagElimination.Rules.Legality;
+using BagElimination.Rules.Simulation;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 namespace BagElimination.Presentation
 {
-    /// <summary>
-    /// Minimal control layer for the T02 click/swap flow. It owns the Ready/Busy state, the current
-    /// selection, and the swap request, and drives <see cref="BoardView"/>'s feedback. It never writes
-    /// to the authoritative <see cref="BoardState"/>: the swap is only evaluated, and the board revert
-    /// below is purely visual, so the rule data is unchanged at the end of any feedback.
-    /// </summary>
     public sealed class BoardController : MonoBehaviour
     {
-        private enum State
-        {
-            Ready, // Accepts input.
-            Busy,  // Animating; new clicks are ignored, not cached.
-        }
-
-        private BoardState _board;
-        private BoardView _view;
-        private State _state = State.Ready;
-
-        private bool _hasSelection;
-        private int _selectedRow;
-        private int _selectedCol;
-
-        public void Initialize(BoardState board, BoardView view)
-        {
-            _board = board;
-            _view = view;
-        }
-
+        private BoardState _board; private BoardView _view; private SimulationContext _context;
+        private bool _busy, _selected, _victory, _demo; private BoardPosition _selection;
+        private int _session; private string _status="Swap adjacent pieces";
+        private float _nextDemo;
+        public void Initialize(BoardState board,BoardView view)
+        { _board=board; _view=view; var config=DemoLevelConfig.Create(); _context=new SimulationContext(board,config.RandomSeed,config.RefillSequence); }
         private void Update()
         {
-            if (_state != State.Ready)
-            {
-                return;
-            }
-
-            Mouse mouse = Mouse.current;
-            if (mouse == null || !mouse.leftButton.wasPressedThisFrame)
-            {
-                return;
-            }
-
-            HandleClick(ScreenToWorld(mouse.position.ReadValue()));
+            if(Keyboard.current!=null && Keyboard.current.rKey.wasPressedThisFrame) Restart();
+            if(_busy || _victory) return;
+            if(_demo && Time.time>=_nextDemo)
+            { var moves=SwapEvaluator.FindLegalSwaps(_board); if(moves.Count>0) { var move=ChooseMove(moves); Request(move.From,move.To); } return; }
+            var mouse=Mouse.current;
+            if(mouse==null || !mouse.leftButton.wasPressedThisFrame || mouse.position.ReadValue().y<65) return;
+            var world=Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
+            if(!_view.TryGetCell(world,out int r,out int c) || !_board.GetCell(r,c).IsMovable) return;
+            var p=new BoardPosition(r,c);
+            if(_selected && Math.Abs(r-_selection.Row)+Math.Abs(c-_selection.Column)==1) { Request(_selection,p); return; }
+            if(_selected && r==_selection.Row && c==_selection.Column) { _selected=false; _view.ClearSelection(); return; }
+            _selected=true; _selection=p; _view.ShowSelection(r,c);
         }
-
-        private void HandleClick(Vector3 worldPosition)
+        private SwapMove ChooseMove(IReadOnlyList<SwapMove> moves)
         {
-            if (_board == null || _view == null)
+            // Deterministic one-turn lookahead for demonstration; never changes the live random stream.
+            SwapMove best=moves[0]; int bestScore=int.MinValue;
+            foreach(var move in moves)
             {
-                return;
+                var config=DemoLevelConfig.Create();
+                var ctx=new SimulationContext(_board,config.RandomSeed,config.RefillSequence)
+                { NextId=_context.NextId,Cursor=_context.Cursor,RandomState=_context.RandomState,ShuffleState=_context.ShuffleState };
+                var end=_board; int score=0;
+                try { foreach(var step in TurnSolver.Resolve(_board,move.From,move.To,ctx)) { end=step.Board; if(step.Kind=="Match")score++; } }
+                catch(InvalidOperationException) { continue; }
+                score+=(_board.CountBackpacks()-end.CountBackpacks())*100;
+                foreach(var p in end.EnumeratePositions()) if(PropEffects.IsProp(end.GetCell(p)))score+=15;
+                if(score>bestScore) { bestScore=score; best=move; }
             }
-
-            if (!_view.TryGetCell(worldPosition, out int row, out int col))
-            {
-                return; // Clicked outside the board: no selection change, no swap.
-            }
-
-            BoardCell clicked = _board.GetCell(row, col);
-            if (clicked.Type != ElementType.NormalPiece)
-            {
-                // Only normal pieces start a swap; a backpack is never selectable or a swap target.
-                return;
-            }
-
-            if (!_hasSelection)
-            {
-                Select(row, col);
-                return;
-            }
-
-            if (_selectedRow == row && _selectedCol == col)
-            {
-                ClearSelection();
-                return;
-            }
-
-            if (IsAdjacent(_selectedRow, _selectedCol, row, col))
-            {
-                RequestSwap(_selectedRow, _selectedCol, row, col);
-                return;
-            }
-
-            // A non-adjacent normal piece becomes the new selection.
-            Select(row, col);
+            return best;
         }
-
-        private void Select(int row, int col)
+        private void Request(BoardPosition a,BoardPosition b)
+        { _selected=false; _view.ClearSelection(); _busy=true; StartCoroutine(Play(a,b,_session)); }
+        private IEnumerator Play(BoardPosition a,BoardPosition b,int session)
         {
-            _hasSelection = true;
-            _selectedRow = row;
-            _selectedCol = col;
-            _view.ShowSelection(row, col);
-        }
-
-        private void ClearSelection()
-        {
-            _hasSelection = false;
-            _view.ClearSelection();
-        }
-
-        private void RequestSwap(int firstRow, int firstCol, int secondRow, int secondCol)
-        {
-            _state = State.Busy;
-            ClearSelection();
-
-            // The resolver carries the whole decision (reject / plain three / special); the
-            // controller only plays the matching feedback and never re-implements match rules.
-            SwapResolveResult result = SwapResolver.Resolve(
-                _board,
-                new BoardPosition(firstRow, firstCol),
-                new BoardPosition(secondRow, secondCol));
-
-            switch (result.Outcome)
+            if(!SwapEvaluator.Evaluate(_board,a,b).Outcome.IsLegal())
+            { yield return _view.AnimateSwap(a.Row,a.Column,b.Row,b.Column,0.16f); yield return _view.AnimateSwap(a.Row,a.Column,b.Row,b.Column,0.16f); _busy=false; yield break; }
+            var iterator=TurnSolver.Resolve(_board,a,b,_context).GetEnumerator();
+            using(iterator)
+            while(session==_session)
             {
-                case SwapResolveOutcome.NormalThree:
-                    StartCoroutine(PlayCommittedSwap(firstRow, firstCol, secondRow, secondCol, result));
-                    break;
-                case SwapResolveOutcome.SpecialUnsupported:
-                    StartCoroutine(PlayPreviewSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SpecialSwapHint));
-                    break;
-                default:
-                    StartCoroutine(PlayPreviewSwap(firstRow, firstCol, secondRow, secondCol, null));
-                    break;
+                bool next=false; string error=null;
+                try { next=iterator.MoveNext(); } catch(Exception ex) { error=ex.Message; Debug.LogException(ex); }
+                if(error!=null) { _status="Resolution stopped - press Restart"; _demo=false; yield break; }
+                if(!next) break;
+                var step=iterator.Current; _board=step.Board;
+                _status=step.Kind=="Ready"?"Swap adjacent pieces":step.Kind;
+                yield return _view.PlayStep(step);
+                if(session!=_session) yield break;
+                if(step.Kind=="Victory") { _victory=true; _demo=false; _status="Great!"; yield return _view.Celebrate(); yield break; }
             }
+            _busy=false; _nextDemo=Time.time+0.3f;
         }
-
-        private IEnumerator PlayPreviewSwap(int firstRow, int firstCol, int secondRow, int secondCol, string hint)
+        private void Restart()
         {
-            // Rejected swaps animate and roll back with no hint; special (four+/cross/2x2) swaps
-            // roll back with a hint. Neither mutates the authoritative board.
-            yield return StartCoroutine(_view.AnimateSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SwapDuration));
-            yield return null;
-
-            if (hint != null)
-            {
-                _view.ShowHint(hint);
-                yield return new WaitForSeconds(BoardView.HintHoldSeconds);
-                _view.HideHint();
-            }
-
-            yield return StartCoroutine(_view.AnimateSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SwapDuration));
-            _state = State.Ready;
+            _session++; StopAllCoroutines(); _busy=false; _victory=false; _selected=false;
+            _view.ResetBoard(); Initialize(BoardFactory.Create(DemoLevelConfig.Create()),_view); _view.Render(_board); _status="Swap adjacent pieces";
         }
-
-        private IEnumerator PlayCommittedSwap(int firstRow, int firstCol, int secondRow, int secondCol, SwapResolveResult result)
+        private void OnGUI()
         {
-            yield return StartCoroutine(_view.AnimateSwap(firstRow, firstCol, secondRow, secondCol, BoardView.SwapDuration));
-
-            // Commit: adopt the cleared snapshot, re-key the piece look-up to the swapped ownership,
-            // hide the cleared pieces and backpacks, and refresh the count from the committed board.
-            _board = result.Board;
-            _view.FinalizeSwap(firstRow, firstCol, secondRow, secondCol);
-            _view.ApplyCommittedBoard(result.Board);
-            _view.RemoveOccupants(result.MatchedCells);
-            _view.RemoveOccupants(result.HitBackpacks);
-            _view.ShowHint(BoardView.RoundCompleteHint);
-
-            // No fall/refill this round: input stays locked (State.Busy) until the scene is re-entered.
-        }
-
-        private static Vector3 ScreenToWorld(Vector2 screenPosition)
-        {
-            if (Camera.main == null)
-            {
-                return Vector3.zero;
-            }
-
-            Vector3 world = Camera.main.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 0f));
-            world.z = 0f;
-            return world;
-        }
-
-        private static bool IsAdjacent(int firstRow, int firstCol, int secondRow, int secondCol)
-        {
-            return Mathf.Abs(firstRow - secondRow) + Mathf.Abs(firstCol - secondCol) == 1;
+            var style=new GUIStyle(GUI.skin.button){fontSize=18};
+            if(GUI.Button(new Rect(15,Screen.height-55,115,40),"Restart",style)) Restart();
+            if(GUI.Button(new Rect(140,Screen.height-55,140,40),_demo?"Stop demo":"Auto demo",style)) { _demo=!_demo; _nextDemo=Time.time; }
+            if(GUI.Button(new Rect(290,Screen.height-55,90,40),"Hint",style) && !_busy && !_victory)
+            { var moves=SwapEvaluator.FindLegalSwaps(_board); if(moves.Count>0) { var m=ChooseMove(moves); _view.ShowSelection(m.From.Row,m.From.Column); _status=$"Swap ({m.From.Row+1},{m.From.Column+1}) to ({m.To.Row+1},{m.To.Column+1})"; } }
+            GUI.Label(new Rect(15,12,Screen.width-30,35),_status,new GUIStyle(GUI.skin.label){fontSize=20,normal={textColor=Color.white}});
         }
     }
 }

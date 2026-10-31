@@ -14,7 +14,7 @@ namespace BagElimination.Presentation
     /// pieces on top, then the top panel with the backpack icon and remaining count.
     /// Board dimensions are read from the passed-in board, not hardcoded here.
     /// </summary>
-    public sealed class BoardView : MonoBehaviour
+    public sealed partial class BoardView : MonoBehaviour
     {
         // --- Layout config (visual scale; the board SIZE comes from BoardState at render time) ---
         private const float CellSpacing = 0.8f;         // World distance between neighbouring cell centers.
@@ -110,6 +110,7 @@ namespace BagElimination.Presentation
                 return;
             }
 
+            Camera.main.orthographicSize = Mathf.Max(5.3f, 4.1f / Camera.main.aspect);
             _rendered = true;
             _board = board;
 
@@ -350,6 +351,8 @@ namespace BagElimination.Presentation
                 }
             }
 
+            if (cell.Type == ElementType.Rocket) return PropSprite(cell);
+            if (cell.Type == ElementType.Bomb || cell.Type == ElementType.Propeller) return PropSprite(cell);
             // Anything else (a prop, or an unknown color) has no mapped sprite; log and render a placeholder.
             Debug.LogWarning("[BoardView] 无法确定格子显示的素材: " + cell + "，使用占位色块。");
             return null;
