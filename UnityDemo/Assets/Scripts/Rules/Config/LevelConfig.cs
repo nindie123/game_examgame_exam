@@ -21,7 +21,7 @@ namespace BagElimination.Rules.Config
             IReadOnlyList<CellSpec> initialCells,
             IReadOnlyList<PieceColor> refillSequence,
             int randomSeed,
-            int configVersion)
+            int configVersion, BagElimination.Rules.Simulation.RuleOptions rules = null)
         {
             if (initialCells == null)
             {
@@ -37,7 +37,7 @@ namespace BagElimination.Rules.Config
             Width = width;
             Height = height;
             RandomSeed = randomSeed;
-            ConfigVersion = configVersion;
+            ConfigVersion = configVersion; Rules = rules ?? new BagElimination.Rules.Simulation.RuleOptions();
 
             var cells = new CellSpec[initialCells.Count];
             for (int i = 0; i < cells.Length; i++)
@@ -55,6 +55,7 @@ namespace BagElimination.Rules.Config
             _refillSequence = Array.AsReadOnly(colors);
         }
 
+        public BagElimination.Rules.Simulation.RuleOptions Rules { get; }
         public string LevelId { get; }
         public int Width { get; }
         public int Height { get; }

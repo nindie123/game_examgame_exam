@@ -26,9 +26,10 @@ namespace BagElimination.Presentation
             }
 
             BoardState board;
+            LevelConfig config;
             try
             {
-                LevelConfig config = DemoLevelConfig.Create();
+                config = Array.IndexOf(Environment.GetCommandLineArgs(),"-second-level") >= 0 ? LevelCatalog.Second() : DemoLevelConfig.Create();
 
                 LevelConfigValidationResult validation = LevelConfigValidator.Validate(config);
                 if (!validation.IsValid)
@@ -53,7 +54,7 @@ namespace BagElimination.Presentation
             var root = new GameObject("BoardPresentation");
             BoardView view = root.AddComponent<BoardView>();
             view.Render(board);
-            root.AddComponent<BoardController>().Initialize(board, view);
+            root.AddComponent<BoardController>().Initialize(board, view, config);
         }
     }
 }

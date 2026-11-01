@@ -5,14 +5,14 @@ namespace BagElimination.Rules.Simulation
 {
     public sealed class SimulationContext
     {
-        public int NextId;
+        public readonly RuleOptions Rules; public int StepId; public int NextId;
         public int Cursor;
         public uint RandomState;
         public uint ShuffleState;
         public readonly IReadOnlyList<PieceColor> Sequence;
-        public SimulationContext(BoardState board, int seed, IReadOnlyList<PieceColor> sequence)
+        public SimulationContext(BoardState board, int seed, IReadOnlyList<PieceColor> sequence, RuleOptions rules = null)
         {
-            foreach (var p in board.EnumeratePositions()) NextId = Math.Max(NextId, board.GetCell(p).ObjectId);
+            Rules = rules ?? new RuleOptions(); foreach (var p in board.EnumeratePositions()) NextId = Math.Max(NextId, board.GetCell(p).ObjectId);
             NextId++;
             RandomState = (uint)seed | 1u; ShuffleState = RandomState ^ 0x9e3779b9u; Sequence = sequence;
         }
@@ -42,13 +42,5 @@ namespace BagElimination.Rules.Simulation
                 if (board.GetCell(p).IsOccupied && !ids.Add(board.GetCell(p).ObjectId))
                     throw new InvalidOperationException("Duplicate object at " + p);
         }
-    }
-    public sealed class SimulationStep
-    {
-        public readonly BoardState Board;
-        public readonly string Kind;
-        public readonly int Origin;
-        public SimulationStep(BoardState board, string kind, int origin = -1)
-        { BoardData.Validate(board); Board = board; Kind = kind; Origin = origin; }
     }
 }

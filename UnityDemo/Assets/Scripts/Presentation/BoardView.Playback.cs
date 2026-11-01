@@ -7,6 +7,14 @@ namespace BagElimination.Presentation
 {
     public sealed partial class BoardView
     {
+        public void RenderSnapshot(BoardState snapshot)
+        {
+            // Fast playback still consumes the same immutable rules steps.
+            if (_pieceTransforms != null)
+                foreach (var piece in _pieceTransforms)
+                    if (piece != null) { piece.gameObject.SetActive(false); Destroy(piece.gameObject); }
+            _board=snapshot; BuildPieces(_boardRoot); RefreshBackpackCount();
+        }
         private readonly Dictionary<string,Sprite> _propSprites=new Dictionary<string,Sprite>();
         private Sprite PropSprite(BoardCell cell)
         {
@@ -317,17 +325,20 @@ namespace BagElimination.Presentation
             Vector3 target = origin;
             if (step.Kind == "Propeller")
             {
-                // Remote target follows the rules' row-major/right-to-left selection,
-                // excluding backpacks already hit by the local four-neighbour effect.
-                bool found = false;
-                int row = step.Origin / before.Width, column = step.Origin % before.Width;
-                for (int r = 0; r < before.Height && !found; r++)
-                    for (int c = before.Width - 1; c >= 0; c--)
-                        if (before.GetCell(r, c).Type == ElementType.Backpack
-                            && Mathf.Abs(r - row) + Mathf.Abs(c - column) > 1
-                            && !step.Board.GetCell(r, c).IsOccupied)
-                        { target = _boardRoot.transform.TransformPoint(CellCenter(r, c)); found = true; break; }
-                flash.sprite = PropSprite(prop);
+                // Consume the rules' actual hit cells rather than selecting a second target in the view.
+                int row=step.Origin/before.Width, column=step.Origin%before.Width;
+                foreach(int hit in step.HitCells)
+                    if(before.GetCell(hit/before.Width,hit%before.Width).Type==ElementType.Backpack
+                        && Mathf.Abs(hit/before.Width-row)+Mathf.Abs(hit%before.Width-column)>1)
+                    {target=_boardRoot.transform.TransformPoint(CellCenter(hit/before.Width,hit%before.Width));break;}                flash.sprite = PropSprite(prop);
+            }
+            Vector2 blastSize=Vector2.one;
+            if(step.Type==StepKind.Bomb && step.HitCells.Count>0)
+            {
+                int minR=before.Height,maxR=0,minC=before.Width,maxC=0;
+                foreach(int hit in step.HitCells){minR=Mathf.Min(minR,hit/before.Width);maxR=Mathf.Max(maxR,hit/before.Width);minC=Mathf.Min(minC,hit%before.Width);maxC=Mathf.Max(maxC,hit%before.Width);}
+                blastSize=new Vector2(maxC-minC+1,maxR-minR+1)*CellSpacing;
+                flash.transform.position=_boardRoot.transform.TransformPoint((CellCenter(minR,minC)+CellCenter(maxR,maxC))*.5f);
             }
             const float seconds = .42f;
             for (float elapsed = 0; elapsed < seconds; elapsed += Time.deltaTime)
@@ -344,7 +355,7 @@ namespace BagElimination.Presentation
                     flash.transform.localScale = Vector3.one * .85f;
                     flash.transform.localRotation = Quaternion.Euler(0, 0, t * 1080);
                 }
-                else flash.transform.localScale = Vector3.one * Mathf.Lerp(.4f, 5 * CellSpacing, 1 - (1 - t) * (1 - t));
+                else flash.transform.localScale = new Vector3(Mathf.Lerp(.4f,blastSize.x,1-(1-t)*(1-t)),Mathf.Lerp(.4f,blastSize.y,1-(1-t)*(1-t)),1);
                 flash.color = new Color(1, .85f, .35f, 1 - t);
                 yield return null;
             }

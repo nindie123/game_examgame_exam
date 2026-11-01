@@ -96,6 +96,14 @@ namespace BagElimination.Presentation
             SetHudLabel("restart","Restart"); SetHudLabel("hint","Hint"); SetHudLabel("auto","Auto");
             LayoutUi(); Canvas.ForceUpdateCanvases();
         }
+        public void ShowSettlementError(string reason)
+        {
+            var rect=UiRect("SettlementError",_uiCanvas.transform,new Vector2(.5f,.2f),new Vector2(600,100),Vector2.zero);
+            var bg=rect.gameObject.AddComponent<Image>(); bg.sprite=RoundedUiSprite();bg.type=Image.Type.Sliced;
+            bg.color=new Color(1,.9f,.78f,.97f);
+            var label=UiText("Message",rect,_chinese ? "结算已停止，请重新开始\n详细原因已保存至日志" : "Settlement stopped. Please restart.\nDetails saved in the log.",24);
+            label.resizeTextForBestFit=true; label.resizeTextMinSize=12;label.resizeTextMaxSize=24;
+        }
         public void SetHudLabel(string id,string value)
         {
             if (!_labels.TryGetValue(id,out var label)) return;

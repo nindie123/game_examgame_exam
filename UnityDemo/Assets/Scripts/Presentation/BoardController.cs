@@ -13,10 +13,15 @@ namespace BagElimination.Presentation
     {
         private BoardState _board; private BoardView _view; private SimulationContext _context;
         private bool _busy, _selected, _victory, _demo; private BoardPosition _selection;
-        private int _session;
+        private readonly SessionGate _gate=new SessionGate();
+        private int _session => _gate.Session;
+        private LevelConfig _config;
+        private ReplayLog _replay; private int _routeIndex;
+        private bool NoAnimation => Array.IndexOf(Environment.GetCommandLineArgs(),"-no-animation")>=0;
+        public SettlementState State { get; private set; } = SettlementState.Ready;
         private float _nextDemo;
-        public void Initialize(BoardState board,BoardView view)
-        { _board=board; _view=view; _view.HudClicked -= OnHudButton; _view.HudClicked += OnHudButton; var config=DemoLevelConfig.Create(); _context=new SimulationContext(board,config.RandomSeed,config.RefillSequence); }
+        public void Initialize(BoardState board,BoardView view,LevelConfig config = null)
+        { _board=board; _view=view; _view.HudClicked -= OnHudButton; _view.HudClicked += OnHudButton; _config=config ?? DemoLevelConfig.Create(); _context=new SimulationContext(board,_config.RandomSeed,_config.RefillSequence,_config.Rules); _replay=new ReplayLog(_config); State=SettlementState.Ready; _routeIndex=_config.LevelId==DemoLevelConfig.LevelId ? 0 : -1; _demo=Array.IndexOf(Environment.GetCommandLineArgs(),"-verify-route")>=0; }
         private void Update()
         {
             if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
@@ -25,7 +30,9 @@ namespace BagElimination.Presentation
                 return;
             }
 
-            _view.SetHudState(_busy, _victory, _demo);
+            if (Keyboard.current != null && Keyboard.current.f2Key.wasPressedThisFrame)
+            { _config=_config.LevelId==DemoLevelConfig.LevelId ? LevelCatalog.Second() : DemoLevelConfig.Create(); Restart(); return; }
+            _view.SetHudState(_busy, _victory, _demo); _view.SetHudLabel("auto",_demo ? "Stop" : "Auto");
             Mouse mouse = Mouse.current;
             if (mouse == null) return;
             Vector3 world = ScreenToWorld(mouse.position.ReadValue());
@@ -90,15 +97,20 @@ namespace BagElimination.Presentation
         }
         private SwapMove ChooseMove(IReadOnlyList<SwapMove> moves)
         {
+            if(_routeIndex>=0 && _routeIndex<LevelCatalog.RecommendedRoute.Count)
+            {
+                var recommended=LevelCatalog.RecommendedRoute[_routeIndex];
+                foreach(var move in moves)if(move.From.Equals(recommended.From)&&move.To.Equals(recommended.To))return move;
+            }
             // Deterministic one-turn lookahead for demonstration; never changes the live random stream.
             SwapMove best=moves[0]; int bestScore=int.MinValue;
             foreach(var move in moves)
             {
-                var config=DemoLevelConfig.Create();
-                var ctx=new SimulationContext(_board,config.RandomSeed,config.RefillSequence)
+                var config=_config;
+                var ctx=new SimulationContext(_board,config.RandomSeed,config.RefillSequence,config.Rules)
                 { NextId=_context.NextId,Cursor=_context.Cursor,RandomState=_context.RandomState,ShuffleState=_context.ShuffleState };
                 var end=_board; int score=0;
-                try { foreach(var step in TurnSolver.Resolve(_board,move.From,move.To,ctx)) { end=step.Board; if(step.Kind=="Match")score++; } }
+                try { foreach(var step in TurnSolver.Resolve(_board,move.From,move.To,ctx)) { end=step.Board; if(step.Kind=="Match")score++; if(step.Type==StepKind.Error) {score=int.MinValue/2;break;} } }
                 catch(InvalidOperationException) { continue; }
                 score+=(_board.CountBackpacks()-end.CountBackpacks())*100;
                 foreach(var p in end.EnumeratePositions()) if(PropEffects.IsProp(end.GetCell(p)))score+=15;
@@ -112,6 +124,12 @@ namespace BagElimination.Presentation
         {
             if(!SwapEvaluator.Evaluate(_board,a,b).Outcome.IsLegal())
             { yield return _view.AnimateSwap(a.Row,a.Column,b.Row,b.Column,0.16f); yield return _view.AnimateSwap(a.Row,a.Column,b.Row,b.Column,0.16f); _busy=false; yield break; }
+            if(_routeIndex>=0 && _routeIndex<LevelCatalog.RecommendedRoute.Count)
+            {
+                var expected=LevelCatalog.RecommendedRoute[_routeIndex];
+                _routeIndex=expected.From.Equals(a)&&expected.To.Equals(b) ? _routeIndex+1 : -1;
+            }
+            _replay.Action(a,b);
             var iterator=TurnSolver.Resolve(_board,a,b,_context).GetEnumerator();
             SimulationStep pending = null;
             using(iterator)
@@ -119,10 +137,12 @@ namespace BagElimination.Presentation
             {
                 bool next=false; string error=null;
                 try { next=pending != null || iterator.MoveNext(); } catch(Exception ex) { error=ex.Message; Debug.LogException(ex); }
-                if(error!=null) { _demo=false; Debug.LogWarning("[BoardController] 结算异常，已停止: " + error); yield break; }
+                if(error!=null) { EnterError(error); yield break; }
                 if(!next) break;
                 var step = pending ?? iterator.Current;
                 pending = null;
+                if(step.Type==StepKind.Error) { _replay.Record(step); EnterError(step.Error); yield break; }
+                State=step.State;
                 if (step.Kind == "Fall" || step.Kind == "Refill")
                 {
                     // Keep every rules snapshot for the view's actual paths, but animate the
@@ -140,24 +160,44 @@ namespace BagElimination.Presentation
                         }
                     }
                     catch (Exception ex) { gravityError = ex.Message; Debug.LogException(ex); }
+                    foreach(var fall in falls) { _replay.Record(fall); _gate.Commit(fall.Id); }
                     _board = falls[falls.Count - 1].Board;
-                    yield return _view.PlayFalls(falls);
-                    if (session != _session) yield break;
+                    if(NoAnimation) _view.RenderSnapshot(_board); else yield return _view.PlayFalls(falls);
+                    if (!_gate.Accepts(session, falls[falls.Count-1].Id)) yield break;
                     if (gravityError != null)
-                    { _demo = false; Debug.LogWarning("[BoardController] 下落异常，已停止: " + gravityError); yield break; }
+                    { EnterError(gravityError); yield break; }
                     continue;
                 }
-                _board=step.Board;
-                yield return _view.PlayStep(step);
-                if(session!=_session) yield break;
-                if(step.Kind=="Victory") { _victory=true; _demo=false; yield return _view.Celebrate(); yield break; }
+                _replay.Record(step); _gate.Commit(step.Id); _board=step.Board;
+                if(step.Type!=StepKind.Checking && step.Type!=StepKind.Ready && step.Type!=StepKind.Victory)
+                { if(NoAnimation) _view.RenderSnapshot(_board); else yield return _view.PlayStep(step); }
+                if(!_gate.Accepts(session,step.Id)) yield break;
+                if(step.Kind=="Victory") { _victory=true; _demo=false; _busy=false; SaveReplay();
+                    if(_routeIndex==LevelCatalog.RecommendedRoute.Count)
+                    {
+                        var difference=ReplayLog.FirstDifference(ReplayLog.Run(_config,LevelCatalog.RecommendedRoute),_replay);
+                        Debug.Log(difference==null ? "[Replay] PASS live presentation equals headless steps." : "[Replay] FAIL "+difference);
+                    }
+                    yield return _view.Celebrate(); yield break; }
             }
             _busy=false; _nextDemo=Time.time+0.3f;
         }
+        private void EnterError(string error)
+        {
+            State=SettlementState.Error; _busy=true; _demo=false;
+            _view.ShowSettlementError(error); _view.SetHudState(true,false,false);
+            Debug.LogError("[Settlement] "+error); SaveReplay();
+        }
+        private void SaveReplay()
+        {
+            try { System.IO.File.WriteAllText(System.IO.Path.Combine(Application.persistentDataPath,"last-replay.txt"),_replay.Export()); }
+            catch(Exception ex) { Debug.LogWarning("Replay export failed: "+ex.Message); }
+        }
+        private void OnDestroy() { if(_view!=null)_view.HudClicked-=OnHudButton; }
         private void Restart()
         {
-            _session++; StopAllCoroutines(); _busy=false; _victory=false; _selected=false; _demo=false;
-            _view.ResetBoard(); Initialize(BoardFactory.Create(DemoLevelConfig.Create()),_view); _view.Render(_board);
+            _gate.Restart(); StopAllCoroutines(); _busy=false; _victory=false; _selected=false; _demo=false;
+            _view.ResetBoard(); Initialize(BoardFactory.Create(_config),_view,_config); _view.Render(_board);
         }
     }
 }
