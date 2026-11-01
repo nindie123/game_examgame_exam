@@ -4,15 +4,14 @@
 
 将以下规则写入 CLAUDE.md，后续每轮开发均须遵守。
 
-## 项目进度快照（2026-10-30）
+## 项目进度快照（2026-11-01）
 
-- 技术栈：Unity 6000.6.7f1 + C#，Universal 2D；规则层为纯 C#，不依赖 UnityEngine。
-- T01 规则层：已完成并验证。Config → 完整校验 → BoardFactory → BoardState；对象编号唯一、开局无立即匹配、至少一步合法交换；EditMode 45 通过。
-- T02 静态绘制：已完成。BoardView 按 BoardState 绘制 9×8 底格 + 39 普通棋子 + 33 背包，顶部背包计数读 CountBackpacks()，不写死。
-- T02 点击交换：已实现待验证。BoardController（Ready/Busy）+ 选中/取消/改选 + SwapEvaluator 评估 + 交换/回退动画 + 有效交换临时提示；输入与表现层不直接改写权威 BoardState。
-- 输入：使用新输入系统（activeInputHandler=1，Mouse.current），Presentation 程序集引用 Unity.InputSystem。
-- 未实现：消除、下落、特殊道具、胜利/死局、重开、结算提交。
-- 验证：T02 待 Unity 重新编译后在 Play Mode 人工核验；完整 A02/T02 未标记完成。
+- 技术栈：Unity 6000.6.7f1 + C#，Universal 2D；规则层纯 C#，不依赖 UnityEngine；输入用新输入系统（Mouse.current，Presentation 引用 Unity.InputSystem）。
+- 规则层 T01—T09：已实现，固定局面/独立运行器验证通过；仅 A01 有 Unity EditMode 内证据（45 项）。
+- 表现/玩法 T02—T10：静态绘制、点击交换、消除、下落、道具、连锁、胜利、演示均已接入；Play Mode 人工核验未完成。
+- 本轮视觉/动画优化：统一背景/棋盘/顶栏、真实道具贴图（程序生成兜底）、柔和选中呼吸环、世界空间 HUD（Restart/Auto/Hint，替换 OnGUI），画面不再显示 Match/Refill/Ready 等内部名。
+- 未完成/待验证：A09 死局专项、T11 回放摘要、A13 构建运行包；编译/运行/画面人工验收本轮未执行。
+- 权威状态见 `Docs/开发状态.md`；动画见 `Docs/动画优化记录-2026-10-31.md`；本轮视觉见 `Docs/视觉与动画优化记录-2026-11-01.md`。
 
 # 项目开发与检查规范
 

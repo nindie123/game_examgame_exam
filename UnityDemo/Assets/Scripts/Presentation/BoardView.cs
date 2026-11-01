@@ -60,6 +60,10 @@ namespace BagElimination.Presentation
         private const string BlueSpritePath = "Presentation/candy_1_3_1";
         private const string GreenSpritePath = "Presentation/candy_1_4_1";
         private const string BackpackSpritePath = "Presentation/candy_7_0_1";
+        private const string RocketHorizontalSpritePath = "Presentation/boost_item_hor";
+        private const string RocketVerticalSpritePath = "Presentation/boost_item_ver";
+        private const string BombSpritePath = "Presentation/boost_candy_bomb";
+        private const string PropellerSpritePath = "Presentation/boost_item_xcross";
 
         // --- Draw order within the default sorting layer ---
         private const int BackgroundOrder = -100;
@@ -76,7 +80,7 @@ namespace BagElimination.Presentation
         private Transform[,] _pieceTransforms;
         private SpriteRenderer _selectionHighlight;
         private TextMesh _hintText;
-        private TextMesh _countText;
+        private UnityEngine.UI.Text _countText;
 
         private Sprite _whiteSprite;
         private Sprite _cellSprite;
@@ -88,6 +92,9 @@ namespace BagElimination.Presentation
         private Sprite _blueSprite;
         private Sprite _greenSprite;
         private Sprite _backpackSprite;
+        private Sprite _backgroundSprite;
+        private Sprite _selectionRingSprite;
+        private Coroutine _selectionPulse;
         private Font _font;
 
         public void Render(BoardState board)
@@ -118,9 +125,8 @@ namespace BagElimination.Presentation
 
             BuildBackground();
 
-            // Measure the top panel first, then fit the board below it.
-            float panelHeight = BuildTopPanel();
-            float boardCenterY = ComputeBoardCenterY(panelHeight);
+            // UI occupies the top and bottom safe areas; the world board stays centered.
+            float boardCenterY = 0f;
 
             GameObject boardRoot = CreateChildObject("Board");
             boardRoot.transform.localPosition = new Vector3(0f, boardCenterY, 0f);
@@ -130,6 +136,7 @@ namespace BagElimination.Presentation
             BuildPieces(boardRoot);
             BuildSelectionHighlight(boardRoot);
             BuildHint();
+            BuildHud();
         }
 
         private void LoadAssets()
@@ -148,47 +155,18 @@ namespace BagElimination.Presentation
 
         private void BuildBackground()
         {
-            SpriteRenderer background = CreateChildSprite("Background", BackgroundOrder);
-            background.sprite = WhiteSprite();
-            background.color = BackgroundColor;
-
-            float height = 2f * Camera.main.orthographicSize;
-            float width = height * Camera.main.aspect;
-            // Oversize by a full screen so the background still covers the view when the camera or aspect changes.
-            background.transform.localScale = new Vector3(width * 2f, height * 2f, 1f);
+            BuildScenery();
         }
-
-        private float ComputeBoardCenterY(float panelHeight)
+        private void BuildBoardPlate(GameObject root)
         {
-            float halfViewHeight = Camera.main.orthographicSize;
-            float boardSpanY = (_board.Height - 1) * CellSpacing + CellWorldSize;
-            float panelBottom = halfViewHeight - TopPanelMargin - panelHeight;
-
-            // The gap is measured to the top of the plate (not the top slot) so the plate never
-            // sits flush against the panel; the plate extends BoardPlatePadding above the slots.
-            return panelBottom - BoardPanelGap - (boardSpanY * 0.5f + BoardPlatePadding);
+            Vector2 size = new Vector2((_board.Width-1)*CellSpacing+CellWorldSize+.24f,(_board.Height-1)*CellSpacing+CellWorldSize+.24f);
+            var frame=CreateChildSprite("BoardFrame",-2,root);
+            frame.sprite=RoundedUiSprite(); frame.drawMode=SpriteDrawMode.Sliced; frame.size=size+Vector2.one*.08f;
+            frame.color=new Color(.22f,.43f,.55f);
+            var plate=CreateChildSprite("BoardPlate",-1,root);
+            plate.sprite=RoundedUiSprite(); plate.drawMode=SpriteDrawMode.Sliced; plate.size=size;
+            plate.color=new Color(.045f,.12f,.19f);
         }
-
-        private void BuildBoardPlate(GameObject boardRoot)
-        {
-            float width = (_board.Width - 1) * CellSpacing + CellWorldSize + 2f * BoardPlatePadding;
-            float height = (_board.Height - 1) * CellSpacing + CellWorldSize + 2f * BoardPlatePadding;
-
-            SpriteRenderer plate = CreateChildSprite("BoardPlate", BoardPlateOrder, boardRoot);
-            if (_plateSprite != null)
-            {
-                plate.sprite = _plateSprite;
-                plate.color = BoardPlateColor;
-                SetSpriteSize(plate, new Vector2(width, height));
-            }
-            else
-            {
-                plate.sprite = WhiteSprite();
-                plate.color = FallbackPlateColor;
-                plate.transform.localScale = new Vector3(width, height, 1f);
-            }
-        }
-
         private void BuildBaseSlots(GameObject boardRoot)
         {
             GameObject gridRoot = CreateChildObject("Grid", boardRoot);
@@ -256,79 +234,6 @@ namespace BagElimination.Presentation
             }
         }
 
-        private float BuildTopPanel()
-        {
-            GameObject panelRoot = CreateChildObject("TopPanel");
-
-            float height;
-            if (_panelSprite != null)
-            {
-                SpriteRenderer background = CreateChildSprite("PanelBackground", TopPanelOrder, panelRoot);
-                background.sprite = _panelSprite;
-                background.color = Color.white;
-
-                Vector2 natural = SpriteNaturalSize(_panelSprite);
-                float scale = natural.x > 0f ? TopPanelWorldWidth / natural.x : 1f;
-                height = natural.y * scale;
-                background.transform.localScale = new Vector3(scale, scale, 1f);
-            }
-            else
-            {
-                height = 1.4f; // Placeholder height so the reserved area is still occupied.
-            }
-
-            panelRoot.transform.localPosition = new Vector3(0f, Camera.main.orthographicSize - TopPanelMargin - height * 0.5f, 0f);
-
-            BuildGoalIcon(panelRoot);
-            BuildCountText(panelRoot);
-            return height;
-        }
-
-        private void BuildGoalIcon(GameObject panelRoot)
-        {
-            SpriteRenderer icon = CreateChildSprite("GoalIcon", TopPanelOverlayOrder, panelRoot);
-            icon.transform.localPosition = new Vector3(GoalIconOffsetX, 0f, 0f);
-            if (_goalSprite != null)
-            {
-                icon.sprite = _goalSprite;
-                icon.color = Color.white;
-                SetSpriteSize(icon, new Vector2(GoalIconWorldSize, GoalIconWorldSize));
-            }
-            else
-            {
-                icon.sprite = WhiteSprite();
-                icon.color = FallbackBackpackColor;
-                icon.transform.localScale = new Vector3(GoalIconWorldSize, GoalIconWorldSize, 1f);
-            }
-        }
-
-        private void BuildCountText(GameObject panelRoot)
-        {
-            int count = _board.CountBackpacks();
-
-            var textObject = CreateChildObject("BackpackCount", panelRoot);
-            textObject.transform.localPosition = new Vector3(CountTextOffsetX, 0f, 0f);
-
-            var textMesh = textObject.AddComponent<TextMesh>();
-            _countText = textMesh;
-            textMesh.text = count.ToString();
-            textMesh.anchor = TextAnchor.MiddleLeft;
-            textMesh.alignment = TextAlignment.Left;
-            textMesh.fontSize = CountFontSize;
-            textMesh.characterSize = CountCharacterSize;
-            textMesh.color = Color.white;
-            if (_font != null)
-            {
-                textMesh.font = _font;
-            }
-
-            MeshRenderer mesh = textObject.GetComponent<MeshRenderer>();
-            if (mesh != null)
-            {
-                mesh.sortingOrder = TopPanelOverlayOrder;
-            }
-        }
-
         private Sprite PieceSpriteFor(BoardCell cell)
         {
             if (cell.Type == ElementType.Backpack)
@@ -368,7 +273,7 @@ namespace BagElimination.Presentation
         private void BuildSelectionHighlight(GameObject boardRoot)
         {
             _selectionHighlight = CreateChildSprite("SelectionHighlight", SelectionHighlightOrder, boardRoot);
-            _selectionHighlight.sprite = WhiteSprite();
+            _selectionHighlight.sprite = SelectionRingSprite();
             _selectionHighlight.color = SelectionHighlightColor;
             float size = CellWorldSize * SelectionScale;
             _selectionHighlight.transform.localScale = new Vector3(size, size, 1f);
@@ -387,6 +292,7 @@ namespace BagElimination.Presentation
             if (_font != null)
             {
                 _hintText.font = _font;
+                hintObject.GetComponent<MeshRenderer>().sharedMaterial = _font.material;
             }
 
             MeshRenderer mesh = hintObject.GetComponent<MeshRenderer>();
@@ -439,6 +345,11 @@ namespace BagElimination.Presentation
 
             _selectionHighlight.transform.localPosition = CellCenter(row, col);
             _selectionHighlight.gameObject.SetActive(true);
+            if (_selectionPulse != null)
+            {
+                StopCoroutine(_selectionPulse);
+            }
+            _selectionPulse = StartCoroutine(PulseSelection());
         }
 
         public void ClearSelection()
@@ -446,6 +357,27 @@ namespace BagElimination.Presentation
             if (_selectionHighlight != null)
             {
                 _selectionHighlight.gameObject.SetActive(false);
+            }
+
+            if (_selectionPulse != null)
+            {
+                StopCoroutine(_selectionPulse);
+                _selectionPulse = null;
+            }
+        }
+
+        private IEnumerator PulseSelection()
+        {
+            float baseSize = CellWorldSize * SelectionScale;
+            while (true)
+            {
+                // Gentle "breathing" so the selected piece stays obvious without a flashing block.
+                float wave = 1f + 0.07f * Mathf.Sin(Time.time * 3.2f);
+                if (_selectionHighlight != null)
+                {
+                    _selectionHighlight.transform.localScale = new Vector3(baseSize * wave, baseSize * wave, 1f);
+                }
+                yield return null;
             }
         }
 
@@ -610,6 +542,73 @@ namespace BagElimination.Presentation
             var child = new GameObject(name);
             child.transform.SetParent(parent != null ? parent.transform : transform, worldPositionStays: false);
             return child;
+        }
+
+        private Sprite BackgroundSprite()
+        {
+            if (_backgroundSprite != null)
+            {
+                return _backgroundSprite;
+            }
+
+            const int size = 256;
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false) { filterMode = FilterMode.Bilinear };
+            Color top = new Color(0.035f, 0.20f, 0.24f);     // 柔和深蓝，顶部略亮。
+            Color bottom = new Color(0.018f, 0.035f, 0.10f);  // 底部略微加深。
+            Color glow = new Color(0.06f, 0.34f, 0.39f);    // 棋盘后方轻微提亮。
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float u = x / (float)(size - 1);
+                    float v = y / (float)(size - 1);
+                    Color color = Color.Lerp(bottom, top, v);
+
+                    // 靠近中上方的柔光，衬托棋盘，不产生生硬分界。
+                    float dx = u - 0.5f;
+                    float dy = v - 0.55f;
+                    float center = Mathf.Clamp01(1f - (dx * dx * 5f + dy * dy * 6f));
+                    color = Color.Lerp(color, glow, center * 0.48f);
+
+                    // 柔和暗角，把视线留在棋盘上。
+                    float edge = new Vector2(u - 0.5f, v - 0.5f).magnitude;
+                    float vignette = Mathf.Clamp01(1f - Mathf.Max(0f, edge - 0.32f) * 1.4f);
+                    color *= Mathf.Lerp(0.82f, 1f, vignette);
+
+                    texture.SetPixel(x, y, color);
+                }
+            }
+
+            texture.Apply();
+            _backgroundSprite = Sprite.Create(texture, new Rect(0f, 0f, size, size), new Vector2(0.5f, 0.5f), 100f);
+            _backgroundSprite.name = "BackgroundGradient";
+            return _backgroundSprite;
+        }
+
+        private Sprite SelectionRingSprite()
+        {
+            if (_selectionRingSprite != null)
+            {
+                return _selectionRingSprite;
+            }
+
+            const int size = 64;
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false) { filterMode = FilterMode.Bilinear };
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float distance = new Vector2(x - (size - 1) * 0.5f, y - (size - 1) * 0.5f).magnitude;
+                    // 内、外缘都柔和衰减，形成描边光环而非方块。
+                    float alpha = Mathf.Clamp01(1f - Mathf.Abs(distance - 26f) / 5f);
+                    texture.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
+                }
+            }
+
+            texture.Apply();
+            _selectionRingSprite = Sprite.Create(texture, new Rect(0f, 0f, size, size), new Vector2(0.5f, 0.5f), 100f);
+            _selectionRingSprite.name = "SelectionRing";
+            return _selectionRingSprite;
         }
 
         private Sprite WhiteSprite()

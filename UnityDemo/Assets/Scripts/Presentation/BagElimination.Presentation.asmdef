@@ -1,17 +1,18 @@
 {
-    "name": "BagElimination.Presentation",
-    "rootNamespace": "BagElimination.Presentation",
-    "references": [
-        "BagElimination.Rules",
-        "Unity.InputSystem"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": false,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "BagElimination.Presentation",
+  "rootNamespace": "BagElimination.Presentation",
+  "references": [
+    "BagElimination.Rules",
+    "Unity.InputSystem",
+    "UnityEngine.UI"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

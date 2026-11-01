@@ -10,25 +10,57 @@ namespace BagElimination.Presentation
         private readonly Dictionary<string,Sprite> _propSprites=new Dictionary<string,Sprite>();
         private Sprite PropSprite(BoardCell cell)
         {
-            string key=cell.Type+"_"+cell.Direction;
-            if(_propSprites.TryGetValue(key,out var cached)) return cached;
-            var tex=new Texture2D(64,64); tex.filterMode=FilterMode.Bilinear;
-            for(int y=0;y<64;y++) for(int x=0;x<64;x++)
+            string key = cell.Type + "_" + cell.Direction;
+            if (_propSprites.TryGetValue(key, out var cached)) return cached;
+
+            // Prefer the real prop art from the asset library; only fall back to the generated
+            // placeholder when that specific asset is missing, so nothing is silently dropped.
+            Sprite sprite = LoadPropSprite(cell.Type, cell.Direction) ?? GeneratePropSprite(cell);
+            _propSprites[key] = sprite;
+            return sprite;
+        }
+
+        private Sprite LoadPropSprite(ElementType type, RocketDirection direction)
+        {
+            string path = PropSpritePathFor(type, direction);
+            return path == null ? null : LoadSpriteOrNull(path);
+        }
+
+        private static string PropSpritePathFor(ElementType type, RocketDirection direction)
+        {
+            switch (type)
             {
-                float dx=x-31.5f,dy=y-31.5f; Color color=Color.clear;
-                if(cell.Type==ElementType.Bomb)
-                { if(dx*dx+dy*dy<700)color=dy>10?new Color(1,.3f,.3f):new Color(.3f,.15f,.5f); if(Mathf.Abs(dy)<6 && Mathf.Abs(dx)<27)color=Color.yellow; }
-                else if(cell.Type==ElementType.Propeller)
-                { if(Mathf.Abs(dx-dy)<9 || Mathf.Abs(dx+dy)<9)color=new Color(1,.75f,.1f); if(dx*dx+dy*dy<90)color=Color.red; }
+                case ElementType.Rocket:
+                    return direction == RocketDirection.Horizontal ? RocketHorizontalSpritePath : RocketVerticalSpritePath;
+                case ElementType.Bomb:
+                    return BombSpritePath;
+                case ElementType.Propeller:
+                    return PropellerSpritePath;
+                default:
+                    return null;
+            }
+        }
+
+        private Sprite GeneratePropSprite(BoardCell cell)
+        {
+            var tex = new Texture2D(64, 64) { filterMode = FilterMode.Bilinear };
+            for (int y = 0; y < 64; y++) for (int x = 0; x < 64; x++)
+            {
+                float dx = x - 31.5f, dy = y - 31.5f; Color color = Color.clear;
+                if (cell.Type == ElementType.Bomb)
+                { if (dx * dx + dy * dy < 700) color = dy > 10 ? new Color(1, .3f, .3f) : new Color(.3f, .15f, .5f); if (Mathf.Abs(dy) < 6 && Mathf.Abs(dx) < 27) color = Color.yellow; }
+                else if (cell.Type == ElementType.Propeller)
+                { if (Mathf.Abs(dx - dy) < 9 || Mathf.Abs(dx + dy) < 9) color = new Color(1, .75f, .1f); if (dx * dx + dy * dy < 90) color = Color.red; }
                 else
                 {
-                    float along=cell.Direction==RocketDirection.Horizontal?dx:dy, across=cell.Direction==RocketDirection.Horizontal?dy:dx;
-                    if(Mathf.Abs(across)<11 && Mathf.Abs(along)<27)color=((int)(along+32)/9)%2==0?Color.red:Color.yellow;
-                    if(along>20 && Mathf.Abs(across)<32-along)color=new Color(.25f,.55f,1);
+                    float along = cell.Direction == RocketDirection.Horizontal ? dx : dy, across = cell.Direction == RocketDirection.Horizontal ? dy : dx;
+                    if (Mathf.Abs(across) < 11 && Mathf.Abs(along) < 27) color = ((int)(along + 32) / 9) % 2 == 0 ? Color.red : Color.yellow;
+                    if (along > 20 && Mathf.Abs(across) < 32 - along) color = new Color(.25f, .55f, 1);
                 }
-                tex.SetPixel(x,y,color);
+                tex.SetPixel(x, y, color);
             }
-            tex.Apply(); var sprite=Sprite.Create(tex,new Rect(0,0,64,64),new Vector2(.5f,.5f),100); _propSprites[key]=sprite; return sprite;
+            tex.Apply();
+            return Sprite.Create(tex, new Rect(0, 0, 64, 64), new Vector2(.5f, .5f), 100);
         }
         public void ResetBoard()
         {
@@ -199,7 +231,7 @@ namespace BagElimination.Presentation
                     float p = Mathf.Clamp01((elapsed - motion.Delay) / (bags[i] ? CollectSeconds : ClearSeconds));
                     if (bags[i])
                     {
-                        Vector3 start = motion.Points[0], end = _countText.transform.position;
+                        Vector3 start = motion.Points[0], end = CollectionTargetWorld();
                         Vector3 control = (start + end) * .5f + Vector3.right * (i % 2 == 0 ? 1.1f : -1.1f) + Vector3.up * 1.2f;
                         float fly = p * p;
                         motion.Transform.position = (1 - fly) * (1 - fly) * start + 2 * (1 - fly) * fly * control + fly * fly * end;
@@ -319,41 +351,6 @@ namespace BagElimination.Presentation
             Destroy(flash.gameObject);
         }
 
-        public IEnumerator Celebrate()
-        {
-            // Finish already submitted spark and collection visuals before retiring the board.
-            yield return new WaitForSeconds(.4f);
-            Vector3 boardScale = _boardRoot.transform.localScale;
-            Vector3 boardPosition = _boardRoot.transform.localPosition;
-            for (float elapsed = 0; elapsed < .35f; elapsed += Time.deltaTime)
-            {
-                float t = Mathf.SmoothStep(0, 1, elapsed / .35f);
-                _boardRoot.transform.localScale = boardScale * (1 - t);
-                _boardRoot.transform.localPosition = boardPosition + Vector3.down * t;
-                yield return null;
-            }
-            _boardRoot.SetActive(false);
-            _hintText.transform.localPosition = new Vector3(0, 1.8f, 0);
-            _hintText.characterSize = .13f;
-            ShowHint("Great!");
-            var reward = CreateChildSprite("Reward", 70);
-            reward.sprite = _goalSprite;
-            SetSpriteSize(reward, new Vector2(2.5f, 2.5f));
-            Vector3 rewardScale = reward.transform.localScale;
-            for (float elapsed = 0; elapsed < .8f; elapsed += Time.deltaTime)
-            {
-                float t = Mathf.Clamp01(elapsed / .8f);
-                float pop = 1 + 2.7f * Mathf.Pow(t - 1, 3) + 1.7f * Mathf.Pow(t - 1, 2);
-                reward.transform.localScale = rewardScale * pop;
-                reward.transform.localPosition = Vector3.up * Mathf.Sin(t * Mathf.PI) * .35f;
-                _hintText.transform.localScale = Vector3.one * pop;
-                yield return null;
-            }
-            reward.transform.localScale = rewardScale;
-            reward.transform.localPosition = Vector3.zero;
-            _hintText.transform.localScale = Vector3.one;
-            StartCoroutine(SparkBurst(new Vector3(-1.3f, 1.4f, 0), new Color(1, .75f, .15f), 20));
-            yield return SparkBurst(new Vector3(1.3f, 1.4f, 0), new Color(.4f, .85f, 1), 20);
-        }
+        public IEnumerator Celebrate() { yield return VictorySequence(); }
     }
 }
