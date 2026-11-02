@@ -33,7 +33,7 @@ namespace BagElimination.Presentation
         private const float CountCharacterSize = 0.06f;
 
         // --- Selection & swap feedback ---
-        private const float SelectionScale = 1.3f;                 // Highlight size relative to the base slot.
+        private const float SelectionScale = 1.5f;                 // Highlight size relative to the base slot.
         public const float SwapDuration = 0.18f;                   // Seconds for one swap-then-rollback leg.
         public const float HintHoldSeconds = 1.0f;                 // How long the valid-swap hint stays visible.
         public const string SpecialSwapHint = "特殊匹配尚未接入";
@@ -47,7 +47,7 @@ namespace BagElimination.Presentation
         private static readonly Color FallbackCellColor = new Color(0.30f, 0.42f, 0.62f);
         private static readonly Color FallbackPlateColor = new Color(0.14f, 0.20f, 0.34f, 0.92f);
         private static readonly Color FallbackBackpackColor = new Color(0.62f, 0.47f, 0.26f);
-        private static readonly Color SelectionHighlightColor = new Color(1f, 0.86f, 0.30f, 0.85f);
+        private static readonly Color SelectionHighlightColor = new Color(1f, 0.86f, 0.30f, 1f);
 
         // --- Resource paths (relative to any Resources folder) ---
         private const string TileSpritePath = "Presentation/tileA";
@@ -372,7 +372,7 @@ namespace BagElimination.Presentation
             while (true)
             {
                 // Gentle "breathing" so the selected piece stays obvious without a flashing block.
-                float wave = 1f + 0.07f * Mathf.Sin(Time.time * 3.2f);
+                float wave = 1f + 0.12f * Mathf.Sin(Time.time * 3.2f);
                 if (_selectionHighlight != null)
                 {
                     _selectionHighlight.transform.localScale = new Vector3(baseSize * wave, baseSize * wave, 1f);
@@ -600,7 +600,7 @@ namespace BagElimination.Presentation
                 {
                     float distance = new Vector2(x - (size - 1) * 0.5f, y - (size - 1) * 0.5f).magnitude;
                     // 内、外缘都柔和衰减，形成描边光环而非方块。
-                    float alpha = Mathf.Clamp01(1f - Mathf.Abs(distance - 26f) / 5f);
+                    float alpha = Mathf.Clamp01(1f - Mathf.Abs(distance - 26f) / 6f);
                     texture.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
                 }
             }

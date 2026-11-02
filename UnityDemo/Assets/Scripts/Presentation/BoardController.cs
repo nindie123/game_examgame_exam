@@ -161,16 +161,17 @@ namespace BagElimination.Presentation
                     }
                     catch (Exception ex) { gravityError = ex.Message; Debug.LogException(ex); }
                     foreach(var fall in falls) { _replay.Record(fall); _gate.Commit(fall.Id); }
+                    if(NoAnimation) _view.RenderSnapshot(falls[falls.Count-1].Board); else yield return _view.PlayFalls(falls);
                     _board = falls[falls.Count - 1].Board;
-                    if(NoAnimation) _view.RenderSnapshot(_board); else yield return _view.PlayFalls(falls);
                     if (!_gate.Accepts(session, falls[falls.Count-1].Id)) yield break;
                     if (gravityError != null)
                     { EnterError(gravityError); yield break; }
                     continue;
                 }
-                _replay.Record(step); _gate.Commit(step.Id); _board=step.Board;
+                _replay.Record(step); _gate.Commit(step.Id);
                 if(step.Type!=StepKind.Checking && step.Type!=StepKind.Ready && step.Type!=StepKind.Victory)
-                { if(NoAnimation) _view.RenderSnapshot(_board); else yield return _view.PlayStep(step); }
+                { if(NoAnimation) _view.RenderSnapshot(step.Board); else yield return _view.PlayStep(step); }
+                _board=step.Board;
                 if(!_gate.Accepts(session,step.Id)) yield break;
                 if(step.Kind=="Victory") { _victory=true; _demo=false; _busy=false; SaveReplay();
                     if(_routeIndex==LevelCatalog.RecommendedRoute.Count)
